@@ -1,0 +1,37 @@
+
+scontrol show job 72243
+JobId=72243 JobName=interactive
+   UserId=kimjong(3151981) GroupId=kimjong(3151981) MCS_label=N/A
+   Priority=437900 Nice=0 Account=def-cglee QOS=normal
+   JobState=COMPLETING Reason=TimeLimit Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=0 Reboot=0 ExitCode=0:0
+   RunTime=01:00:25 TimeLimit=01:00:00 TimeMin=N/A
+   SubmitTime=2025-11-04T17:43:27 EligibleTime=2025-11-04T17:43:27
+   AccrueTime=2025-11-04T17:43:27
+   StartTime=2025-11-04T17:43:42 EndTime=2025-11-04T18:44:07 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-11-04T17:43:42 Scheduler=Backfill
+   Partition=compute AllocNode:Sid=trig-login01:3118746
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=trig0005
+   BatchHost=trig0005
+   NumNodes=1 NumCPUs=24 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=192500M,node=1,billing=1,gres/gpu=1
+   AllocTRES=cpu=24,mem=192500M,node=1,billing=1,gres/gpu=1
+   Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=192500M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/bin/sh
+   WorkDir=/scratch/kimjong/MIE1517-Fall2025-Group11
+   Comment=/opt/slurm/bin/salloc --time=1:0:0 --nodes=1 --gpus-per-node=1 --ntasks-per-node=1 --account=def-cglee 
+   CpusPerTres=gpu:24
+   TresPerNode=gres/gpu:1
+   
+
+sacct -j 72243
+JobID           JobName    Account    Elapsed  MaxVMSize     MaxRSS  SystemCPU    UserCPU ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- ---------- ---------- -------- 
+72243        interacti+  def-cglee   01:00:25                         00:00:00   00:00:00      0:0 
+72243.inter+ interacti+  def-cglee   01:00:25                         00:00:00   00:00:00      0:0 
+72243.extern     extern  def-cglee   01:00:25                         00:00:00   00:00:00      0:0 
+
