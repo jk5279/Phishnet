@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-11-04T20:24:51.817029",
+  "best_accuracy": 0.9891170383461619,
+  "metrics": {
+    "test_accuracy": 0.9891170383461619,
+    "test_precision_weighted": 0.9891421962340408,
+    "test_recall_weighted": 0.9891170383461619,
+    "test_f1_weighted": 0.9891107762420488
+  },
+  "training_history": {
+    "epochs": [
+      1,
+      2,
+      3
+    ],
+    "train_loss": [
+      0.07554484496910513,
+      0.024453354128928836,
+      0.014512513682684284
+    ],
+    "test_accuracy": [
+      0.9863265353579983,
+      0.9877217868520801,
+      0.9891170383461619
+    ]
+  },
+  "confusion_matrix": [
+    [
+      24079,
+      141
+    ],
+    [
+      327,
+      18456
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n           0       0.99      0.99      0.99     24220\n           1       0.99      0.98      0.99     18783\n\n    accuracy                           0.99     43003\n   macro avg       0.99      0.99      0.99     43003\nweighted avg       0.99      0.99      0.99     43003\n",
+  "model_config": {
+    "model_name": "/scratch/kimjong/MIE1517-Fall2025-Group11/local_bert_cased",
+    "max_len": 512,
+    "batch_size": 204,
+    "n_epochs": 3,
+    "learning_rate": 2e-05
+  }
+}

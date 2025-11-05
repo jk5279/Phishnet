@@ -1,0 +1,40 @@
+============================================================
+DL Model Evaluation Report
+============================================================
+
+Timestamp: 2025-11-04T20:24:51.823306
+Model: BERT-based Classifier
+
+Model Configuration:
+  Base Model: /scratch/kimjong/MIE1517-Fall2025-Group11/local_bert_cased
+  Max Length: 512
+  Batch Size: 204
+  Epochs: 3
+  Learning Rate: 2e-05
+
+Best Test Accuracy: 0.9891 (98.91%)
+
+Test Set Metrics:
+  Accuracy: 0.9891 (98.91%)
+  Precision (weighted): 0.9891
+  Recall (weighted): 0.9891
+  F1 Score (weighted): 0.9891
+
+Training History:
+  Epoch 1: Loss=0.0755, Accuracy=0.9863
+  Epoch 2: Loss=0.0245, Accuracy=0.9877
+  Epoch 3: Loss=0.0145, Accuracy=0.9891
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99     24220
+           1       0.99      0.98      0.99     18783
+
+    accuracy                           0.99     43003
+   macro avg       0.99      0.99      0.99     43003
+weighted avg       0.99      0.99      0.99     43003
+
+Confusion Matrix:
+[[24079   141]
+ [  327 18456]]
