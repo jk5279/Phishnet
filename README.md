@@ -438,3 +438,5 @@ See LICENSE file for details.
 ## Contact
 
 Group 11 - MIE1517 Fall 2025, University of Toronto
+Jongeun Kim (jhnny.kim@mail.utoronto.ca)
+
