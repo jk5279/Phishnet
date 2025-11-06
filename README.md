@@ -4,6 +4,15 @@ Phishing Email Detection using Machine Learning and Deep Learning
 
 This repository contains a comprehensive pipeline for detecting phishing emails using both traditional machine learning models and deep learning (BERT) approaches. The project is developed for MIE1517 Fall 2025 at the University of Toronto.
 
+**Note**: This repository is set up for local machine development. For compute cluster usage, configure the environment according to your cluster's module system and requirements.
+
+## Dataset
+
+The dataset used for this project can be downloaded from:
+**[Download Dataset](https://drive.google.com/file/d/1TS3roaFfIqD8udQyhxWzYVH1QKHT-clL/view?usp=drive_link)**
+
+After downloading, extract the dataset to the `Dataset/` directory in the project root. The data will be processed by the pipeline scripts.
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -304,9 +313,25 @@ label, confidence, ml_pred, dl_pred = predict_ensemble("Your email text here..."
 
 ## Dependencies
 
+### Installation
+
+Install all dependencies using the requirements file:
+
+```bash
+# Create virtual environment (recommended)
+python -m venv ENV
+source ENV/bin/activate  # On Windows: ENV\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Download NLTK data (required for preprocessing)
+python -c "import nltk; nltk.download('stopwords')"
+```
+
 ### Python Packages
 
-Core packages:
+Core packages (see `requirements.txt` for versions):
 - `pandas` - Data manipulation
 - `numpy` - Numerical computing
 - `scikit-learn` - Machine learning models and utilities
@@ -322,12 +347,14 @@ Core packages:
 
 ### Environment Setup
 
-Activate the virtual environment:
+**For GPU support (optional but recommended for DL pipeline on local machines):**
+
+Install PyTorch with CUDA support from [pytorch.org](https://pytorch.org/get-started/locally/). For example:
 ```bash
-source ENV/bin/activate
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-**Note**: If using a compute cluster, load appropriate modules (CUDA, etc.) before activating the environment.
+**Note**: This setup is for local machines. For compute clusters, use the cluster's module system and environment management tools.
 
 ## Usage Instructions
 
