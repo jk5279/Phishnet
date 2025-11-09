@@ -518,6 +518,62 @@ def eval_model(model, data_loader, device):
 # Model Saving
 # =========================
 
+def create_test_loader_from_csv(csv_path: str, tokenizer, max_len: int = MAX_LEN, batch_size: int = BATCH_SIZE):
+    """
+    Create a test DataLoader from a CSV file.
+    
+    Args:
+        csv_path: Full path to the CSV file
+        tokenizer: BERT tokenizer
+        max_len: Maximum sequence length for tokenization
+        batch_size: Batch size for the DataLoader
+        
+    Returns:
+        DataLoader: Test data loader
+        
+    Note:
+        The CSV file must have a 'text' column. If 'label' column is not provided,
+        all samples will be labeled as 1.
+    """
+    print(f"\nCreating test DataLoader from {csv_path}")
+    
+    # Load CSV file
+    try:
+        df = pd.read_csv(csv_path)
+    except FileNotFoundError:
+        print(f"ERROR: Could not find file {csv_path}")
+        raise
+        
+    if 'text' not in df.columns:
+        raise ValueError("CSV file must contain a 'text' column")
+    
+    # Create labels if not provided
+    if 'label' not in df.columns:
+        print("No 'label' column found. Creating default labels of 1.")
+        labels = np.ones(len(df))
+    else:
+        labels = df['label'].values
+        
+    # Create dataset
+    test_dataset = PhishingDataset(
+        texts=df['text'].tolist(),
+        labels=labels,
+        tokenizer=tokenizer,
+        max_len=max_len
+    )
+    
+    # Create DataLoader
+    test_loader = DataLoader(
+        test_dataset,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=NUM_WORKERS
+    )
+    
+    print(f"Created test DataLoader with {len(test_dataset)} samples")
+    return test_loader
+
+
 def save_model_components(model, tokenizer, label_encoder, save_best=False, best_model_path=None):
     """
     Save model, tokenizer, and label encoder.
