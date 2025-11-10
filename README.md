@@ -4,6 +4,8 @@ Phishing Email Detection using Machine Learning and Deep Learning
 
 This repository contains a comprehensive pipeline for detecting phishing emails using both traditional machine learning models and deep learning (BERT) approaches. The project is developed for MIE1517 Fall 2025 at the University of Toronto.
 
+![Phishnet Project Image](Phishnet%20Project%20Image.jpg)
+
 **Note**: This repository is set up for local machine development. For compute cluster usage, configure the environment according to your cluster's module system and requirements.
 
 ## Dataset
@@ -42,6 +44,8 @@ MIE1517-Fall2025-Group11/
 ├── 04_ml_pipeline.py               # ML model training and evaluation
 ├── 05_dl_pipeline.py               # DL model training and evaluation
 ├── 06_inference_pipeline.py        # Inference and prediction utilities
+├── 07_phishing_categories_retrieval.py  # Scrape Berkeley phishing examples archive
+├── 08_process_hunter_biden_email_dataset.py  # Process Hunter Biden email dataset
 ├── Dataset/                         # Raw data directory
 ├── cleaned_data/                    # Processed datasets
 ├── models/                          # Trained models and artifacts
@@ -311,6 +315,82 @@ label, confidence, ml_pred, dl_pred = predict_ensemble("Your email text here..."
 - `predict_dl_batch(texts, ...)`: Batch DL predictions
 - `predict_ensemble(text, ...)`: Weighted ensemble prediction
 
+---
+
+### 07_phishing_categories_retrieval.py
+
+**Purpose**: Scrape Berkeley phishing examples archive to retrieve phishing email categories and descriptions
+
+**What it does**:
+1. Scrapes the UC Berkeley Security website's phishing examples archive
+2. Retrieves phishing email categories, titles, and descriptions
+3. Follows links to individual phishing examples to extract detailed information
+4. Extracts "What makes this a phishing message?" sections for each category
+5. Saves all retrieved data to a CSV file for further processing
+
+**Input**: UC Berkeley Security website (https://security.berkeley.edu/education-awareness/phishing/phishing-examples-archive)
+
+**Output**: `phishing_examples_berkley.csv` - CSV file containing:
+- Title of each phishing category
+- Link to the detailed page
+- Description of the phishing example
+- "What makes this a phishing message?" content
+
+**Usage**:
+```bash
+python 07_phishing_categories_retrieval.py
+```
+
+**Key Features**:
+- Web scraping with BeautifulSoup
+- Handles dynamic content and nested HTML structures
+- Includes rate limiting (sleep between requests) to be respectful to the server
+- Extracts structured information from multiple pages
+- Sanity checks to ensure relevant content is retrieved
+
+**Note**: This script is used to gather context for generating synthetic phishing emails. The retrieved categories and descriptions can be used as prompts for LLM-based email generation.
+
+---
+
+### 08_process_hunter_biden_email_dataset.py
+
+**Purpose**: Process the Hunter Biden email dataset to extract legitimate emails for training
+
+**What it does**:
+1. Reads the Hunter Biden email dataset (JSON format) from Kaggle
+2. Extracts individual emails from the dataset
+3. Filters emails by length (removes overly long emails > 500 characters)
+4. Labels all emails as "Not Phishing" (legitimate communications)
+5. Saves extracted emails to CSV format for integration with other datasets
+
+**Input**: Hunter Biden email dataset (JSON file)
+- **Source**: [Kaggle Dataset](https://www.kaggle.com/datasets/anuranroy/hunter-biden-mails)
+- **Note**: The dataset is large (~3GB) and not stored in this repository
+
+**Output**: `datasets/raw - DO NOT OVERWRITE/hunter_biden_emails/hunter_biden_1000_emails.csv`
+- CSV file with `text` and `label` columns
+- Default: 1000 emails extracted (configurable)
+
+**Usage**:
+```bash
+# Update the dataset_path variable in the script to point to your downloaded dataset
+python 08_process_hunter_biden_email_dataset.py
+```
+
+**Key Features**:
+- Uses `ijson` for efficient streaming JSON parsing (handles large files)
+- Extracts individual emails from email chains by finding email boundaries
+- Filters by email length to maintain quality
+- Configurable number of emails to extract
+- Automatically creates output directory if it doesn't exist
+
+**Configuration**:
+- `num_emails`: Number of emails to extract (default: 1000)
+- `dataset_path`: Path to the downloaded JSON dataset file
+- `csv_output_path`: Output directory for the processed CSV file
+
+**Note**: This script adds legitimate email examples to the training dataset, helping balance the dataset with non-phishing emails. The processed CSV can be merged with other datasets using `01_data_aggregation.py`.
+
 ## Dependencies
 
 ### Installation
@@ -344,6 +424,8 @@ Core packages (see `requirements.txt` for versions):
 - `wordcloud` - Word cloud generation
 - `tqdm` - Progress bars
 - `scipy` - Scientific computing (optional, has fallback)
+- `requests` - HTTP library for web scraping (script 07)
+- `ijson` - Streaming JSON parser for large files (script 08)
 
 ### Environment Setup
 
