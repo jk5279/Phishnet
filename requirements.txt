@@ -32,6 +32,12 @@ nltk>=3.8.0
 beautifulsoup4>=4.11.0
 
 # ==========================================
+# Web Scraping & Data Collection
+# ==========================================
+requests>=2.28.0
+ijson>=3.2.0  # For streaming JSON parsing (script 08)
+
+# ==========================================
 # Visualization
 # ==========================================
 matplotlib>=3.6.0
