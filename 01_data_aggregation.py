@@ -263,7 +263,8 @@ def combine_csvs_from_directory(
                 continue
 
             # Add provenance columns
-            df["source_file"] = os.path.basename(f)
+            # Replace commas with semicolons to avoid CSV parsing issues
+            df["source_file"] = os.path.basename(f).replace(",", ";")
             df["record_id"] = df.index
 
             # Get relative path of the file's directory from the root
@@ -271,10 +272,10 @@ def combine_csvs_from_directory(
 
             if relative_dir_path == ".":
                 # File is in the root, use root directory's name as source_name
-                df["source_name"] = os.path.basename(os.path.normpath(root_directory))
+                df["source_name"] = os.path.basename(os.path.normpath(root_directory)).replace(",", ";")
             else:
                 # File is in a subdirectory, use the first-level subdirectory name
-                df["source_name"] = relative_dir_path.split(os.sep)[0]
+                df["source_name"] = relative_dir_path.split(os.sep)[0].replace(",", ";")
 
             dfs.append(df)
 
@@ -330,7 +331,7 @@ def combine_csvs_from_directory(
 
     # Create output directory if it doesn't exist
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
-    combined.to_csv(output_filename, index=False)
+    combined.to_csv(output_filename, index=False, quoting=csv.QUOTE_MINIMAL)
     print(f" - Combined rows: {len(combined)}")
     print(f" - Saved: {output_filename}")
     return combined
@@ -430,7 +431,7 @@ def process_to_master(
     final_df["label"] = final_df["label"].astype(int)
 
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
-    final_df.to_csv(output_filename, index=False)
+    final_df.to_csv(output_filename, index=False, quoting=csv.QUOTE_MINIMAL)
     print(f" - Saved master: {output_filename} ({len(final_df)} rows)")
     return final_df
 
@@ -531,7 +532,7 @@ def clean_dataset(
     df = df[first_cols + other_cols]
 
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
-    df.to_csv(output_filename, index=False)
+    df.to_csv(output_filename, index=False, quoting=csv.QUOTE_MINIMAL)
     print(f" - Saved cleaned: {output_filename} ({len(df)} rows)")
     return df
 
@@ -571,7 +572,7 @@ def deduplicate_dataset(
     print("==================================")
 
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
-    df.to_csv(output_filename, index=False)
+    df.to_csv(output_filename, index=False, quoting=csv.QUOTE_MINIMAL)
     print(f" - Saved final: {output_filename} ({after} unique rows)")
     return df
 
@@ -676,7 +677,7 @@ def sample_and_combine_datasets(
 
     print(f"Combined Dataset (Dataset 3): {len(combined_df)} rows")
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
-    combined_df.to_csv(output_filename, index=False)
+    combined_df.to_csv(output_filename, index=False, quoting=csv.QUOTE_MINIMAL)
     print(f" - Saved: {output_filename}")
 
     return combined_df
@@ -713,7 +714,7 @@ def split_dataset(
     # Save files
     for d, path in [(train_df, train_out), (val_df, val_out), (test_df, test_out)]:
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        d.to_csv(path, index=False)
+        d.to_csv(path, index=False, quoting=csv.QUOTE_MINIMAL)
         print(f" - Saved: {path}")
 
     return train_df, val_df, test_df

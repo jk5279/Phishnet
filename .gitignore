@@ -212,5 +212,6 @@ __marimo__/
 Dataset/
 cleaned_data/
 trillium_related/
+models/pretrained/
 .git-credentials
 ~/.git-credentials
