@@ -46,7 +46,7 @@ MIE1517-Fall2025-Group11/
 ├── 06_inference_pipeline.py        # Inference and prediction utilities
 ├── 07_phishing_categories_retrieval.py  # Scrape Berkeley phishing examples archive
 ├── 08_process_hunter_biden_email_dataset.py  # Process Hunter Biden email dataset
-├── Dataset/                         # Raw data directory
+├── datasets/                        # Raw data directory
 ├── cleaned_data/                    # Processed datasets
 ├── models/                          # Trained models and artifacts
 ├── eda_outputs/                     # Exploratory data analysis visualizations
@@ -69,7 +69,7 @@ The complete pipeline consists of 6 sequential scripts:
 
 ### Data Flow
 
-1. **01_data_aggregation.py**: Combines raw CSV files → creates master dataset
+1. **01_data_aggregation.py**: Combines raw CSV files → creates processed datasets and train/val/test splits
 2. **02_ml_preprocessing_eda.py**: Processes master dataset for ML → creates ML dataset
 3. **03_dl_preprocessing_eda.py**: Processes master dataset for DL → creates DL dataset
 4. **04_ml_pipeline.py**: Trains ML models on ML dataset → saves ML model
@@ -83,15 +83,23 @@ The complete pipeline consists of 6 sequential scripts:
 **Purpose**: Initial data aggregation and preliminary preprocessing
 
 **What it does**:
-- Combines CSV files from multiple directories
-- Consolidates text and label columns from different sources
-- Standardizes labels (maps to binary: 0=Not Phishing, 1=Phishing)
-- Applies initial text cleaning (HTML removal, URL/email replacement)
-- Deduplicates the dataset
+- Stage 1: Aggregates CSV files from `datasets/raw - DO NOT OVERWRITE/` (excluding `test_datasets/`)
+- Stage 2: Aggregates CSV files from `test_datasets/` directory
+- For both stages: consolidates columns, standardizes labels, cleans text, deduplicates
+- Samples from dataset1 to reach target size (default: 100,000 rows), combines with dataset2
+- Splits combined dataset into train (70%), validation (15%), and test (15%) with stratified sampling
 
-**Input**: Raw CSV files in `Dataset/raw - DO NOT OVERWRITE/`
+**Input**: 
+- Raw CSV files in `datasets/raw - DO NOT OVERWRITE/` (excluding `test_datasets/`)
+- Test datasets in `datasets/raw - DO NOT OVERWRITE/test_datasets/`
 
-**Output**: `cleaned_data/master_email_dataset_final.csv`
+**Output**: 
+- `cleaned_data/dataset1_processed.csv` - Processed training source data
+- `cleaned_data/dataset2_processed.csv` - Processed test datasets
+- `cleaned_data/dataset3_combined.csv` - Combined sampled dataset
+- `cleaned_data/train_split.csv` - Training set (70%)
+- `cleaned_data/validation_split.csv` - Validation set (15%)
+- `cleaned_data/test_split.csv` - Test set (15%)
 
 **Usage**:
 ```bash
@@ -99,6 +107,12 @@ python 01_data_aggregation.py
 ```
 
 **Key Features**:
+- Two-stage aggregation (separates training data from test datasets)
+- Intelligent sampling (samples from dataset1 to reach target size)
+- Stratified train/validation/test split
+- Minimum text length filtering (50 characters)
+- Support for lowercase "text" and "label" columns (test_datasets format)
+- All configuration values extracted to named constants
 - Multiprocessing support for parallel text cleaning
 - Handles multiple column name variations across source files
 - Preserves provenance information (source_file, source_name, record_id)
@@ -477,7 +491,13 @@ This will run example predictions using both ML and DL models.
 ## Output Files
 
 ### Data Files
-- `cleaned_data/master_email_dataset_final.csv` - Aggregated and cleaned master dataset
+- `cleaned_data/dataset1_processed.csv` - Processed training source data
+- `cleaned_data/dataset2_processed.csv` - Processed test datasets
+- `cleaned_data/dataset3_combined.csv` - Combined sampled dataset
+- `cleaned_data/train_split.csv` - Training set (70%)
+- `cleaned_data/validation_split.csv` - Validation set (15%)
+- `cleaned_data/test_split.csv` - Test set (15%)
+- `cleaned_data/master_email_dataset_final.csv` - Legacy/Intermediate aggregated dataset
 - `cleaned_data/ml_dataset_final.csv` - ML-ready dataset
 - `cleaned_data/dl_dataset_final.csv` - DL-ready dataset
 
@@ -505,6 +525,7 @@ This will run example predictions using both ML and DL models.
 
 ## Notes
 
+- Configuration values (target dataset size, split ratios, minimum text length, etc.) can be adjusted via constants at the top of the `01_data_aggregation.py` script.
 - The ML and DL pipelines use different preprocessing strategies:
   - **ML**: Aggressive cleaning (lowercase, removes punctuation) for TF-IDF
   - **DL**: Gentle cleaning (preserves case/punctuation) for BERT
