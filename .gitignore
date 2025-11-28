@@ -211,6 +211,6 @@ __marimo__/
 # Download dataset from: https://drive.google.com/file/d/1TS3roaFfIqD8udQyhxWzYVH1QKHT-clL/view?usp=drive_link
 Dataset/
 cleaned_data/
-trillium_relatad/
+trillium_related/
 .git-credentials
 ~/.git-credentials
