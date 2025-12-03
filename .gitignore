@@ -215,3 +215,26 @@ trillium_related/
 models/pretrained/
 .git-credentials
 ~/.git-credentials
+
+# Environment-specific files
+*.log
+*.out
+*.err
+*.sh
+.vscode/
+
+# Large model files
+ml_methods/*/model/*.pkl
+dl_methods/*/model/*.pt
+dl_methods/*/model/*.bin
+dl_methods/*/model/best/
+dl_methods/*/model/tokenizer/
+
+# Temporary files
+archive/
+eda_outputs/
+money_viz*.log
+raw_test_viz.log
+
+# Large interpretation outputs (optional - uncomment if excluding)
+# dl_methods/*/logs/interpretations/**/*.png

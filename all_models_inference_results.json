@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-11-29T12:14:38.398629",
+  "dataset_path": "datasets/Demonstration dataset.csv",
+  "total_samples": 14,
+  "true_label": "Bait (1) for all samples",
+  "results": {
+    "linear_svc": {
+      "model_type": "ML",
+      "accuracy": 0.7142857142857143,
+      "total_samples": 14,
+      "correct_predictions": 10
+    },
+    "logistic_regression": {
+      "model_type": "ML",
+      "accuracy": 0.7142857142857143,
+      "total_samples": 14,
+      "correct_predictions": 10
+    },
+    "naive_bayes": {
+      "model_type": "ML",
+      "accuracy": 0.8571428571428571,
+      "total_samples": 14,
+      "correct_predictions": 12
+    },
+    "sgd_classifier": {
+      "model_type": "ML",
+      "accuracy": 0.35714285714285715,
+      "total_samples": 14,
+      "correct_predictions": 5
+    },
+    "bert": {
+      "model_type": "DL",
+      "accuracy": 0.6428571428571429,
+      "total_samples": 14,
+      "correct_predictions": 9
+    },
+    "distilbert": {
+      "model_type": "DL",
+      "accuracy": 0.7142857142857143,
+      "total_samples": 14,
+      "correct_predictions": 10
+    },
+    "roberta": {
+      "model_type": "DL",
+      "accuracy": 0.6428571428571429,
+      "total_samples": 14,
+      "correct_predictions": 9
+    }
+  },
+  "summary": {
+    "ml_average_accuracy": 0.6607142857142857,
+    "dl_average_accuracy": 0.6666666666666666,
+    "overall_average_accuracy": 0.663265306122449
+  }
+}

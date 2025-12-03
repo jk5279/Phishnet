@@ -11,9 +11,9 @@ import sys
 csv.field_size_limit(sys.maxsize)
 
 FILES_TO_CHECK = [
-    "cleaned_data/train_split.csv",
-    "cleaned_data/validation_split.csv",
-    "cleaned_data/test_split.csv",
+    "cleaned_data/train/train_split.csv",
+    "cleaned_data/validation/validation_split.csv",
+    "cleaned_data/test/test_split.csv",
 ]
 
 def check_file(filename):

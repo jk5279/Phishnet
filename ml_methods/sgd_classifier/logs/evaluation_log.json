@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-11-28T22:07:52.189262",
+  "model_name": "SGD Classifier (SVM-like)",
+  "best_hyperparameters": {
+    "clf__alpha": 0.0001,
+    "clf__class_weight": null,
+    "preprocessor__text__max_features": 20000,
+    "preprocessor__text__ngram_range": [
+      1,
+      2
+    ]
+  },
+  "metrics": {
+    "cross_validation_score": 0.9645061851268167,
+    "test_accuracy": 0.9671905155776124,
+    "test_precision_weighted": 0.9671828007214822,
+    "test_recall_weighted": 0.9671905155776124,
+    "test_f1_weighted": 0.9671791952555078
+  },
+  "confusion_matrix": [
+    [
+      7910,
+      218
+    ],
+    [
+      258,
+      6122
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n           0       0.97      0.97      0.97      8128\n           1       0.97      0.96      0.96      6380\n\n    accuracy                           0.97     14508\n   macro avg       0.97      0.97      0.97     14508\nweighted avg       0.97      0.97      0.97     14508\n"
+}

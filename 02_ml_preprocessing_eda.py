@@ -10,7 +10,18 @@ exploratory data analysis visualizations:
 3. Length filtering (5-2000 tokens)
 4. EDA visualizations (distributions, correlations, n-grams, word clouds)
 
-Output: cleaned_data/ml_dataset_final.csv and eda_outputs/*.png
+Output: 
+- cleaned_data/ML/train/train_split.csv (processed train set)
+- cleaned_data/ML/validation/validation_split.csv (processed validation set)
+- cleaned_data/ML/test/test_split.csv (processed test set)
+- eda_outputs/ml_cleaning/train/*.png (EDA visualizations for train split)
+- eda_outputs/ml_cleaning/validation/*.png (EDA visualizations for validation split)
+- eda_outputs/ml_cleaning/test/*.png (EDA visualizations for test split)
+
+Input: 
+- cleaned_data/train_split.csv (from 01_data_aggregation.py)
+- cleaned_data/validation_split.csv (from 01_data_aggregation.py)
+- cleaned_data/test_split.csv (from 01_data_aggregation.py)
 """
 
 import os
@@ -39,12 +50,11 @@ warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 # =========================
 
 # Input/Output paths
-INPUT_FILE = os.path.join("cleaned_data", "master_email_dataset_final.csv")
-OUTPUT_DIR = "cleaned_data"
-EDA_OUTPUT_DIR = "eda_outputs"
-CLEANED_OUTPUT = os.path.join(OUTPUT_DIR, "ml_dataset_cleaned.csv")
-DEDUPED_OUTPUT = os.path.join(OUTPUT_DIR, "ml_dataset_deduped.csv")
-FINAL_OUTPUT = os.path.join(OUTPUT_DIR, "ml_dataset_final.csv")
+TRAIN_INPUT = os.path.join("cleaned_data", "train_split.csv")
+VAL_INPUT = os.path.join("cleaned_data", "validation_split.csv")
+TEST_INPUT = os.path.join("cleaned_data", "test_split.csv")
+OUTPUT_DIR = os.path.join("cleaned_data", "ML")
+EDA_OUTPUT_DIR = "eda_outputs/ml_cleaning"
 
 # Preprocessing settings
 MIN_TOKEN_LENGTH = 5
@@ -449,6 +459,50 @@ def run_eda(df: pd.DataFrame, output_dir: str):
 # Main Execution
 # ===================================================================
 
+def process_split(input_file, split_name, output_dir):
+    """Process a single split (train/validation/test) through the ML preprocessing pipeline."""
+    print(f"\n{'=' * 60}")
+    print(f"Processing {split_name.upper()} Split")
+    print(f"{'=' * 60}")
+    
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Define output paths for this split
+    cleaned_output = os.path.join(output_dir, f"{split_name}_cleaned.csv")
+    deduped_output = os.path.join(output_dir, f"{split_name}_deduped.csv")
+    # Final output goes to organized subdirectory
+    final_output = os.path.join(output_dir, f"{split_name}_split.csv")
+    
+    # Step A1: Clean
+    cleaned_df = clean_dataset_ml(
+        input_filename=input_file,
+        output_filename=cleaned_output,
+        workers=NUM_WORKERS
+    )
+    
+    if cleaned_df.empty:
+        print(f"\n{split_name.capitalize()} split processing stopped: Could not load or clean input file.")
+        return None
+    
+    # Step A2: Deduplicate
+    deduped_df = deduplicate_dataset_ml(
+        cleaned_df,
+        output_filename=deduped_output
+    )
+    
+    # Step A3: Filter by Length
+    final_df = filter_by_length_ml(
+        deduped_df,
+        output_filename=final_output,
+        min_len=MIN_TOKEN_LENGTH,
+        max_len=MAX_TOKEN_LENGTH
+    )
+    
+    print(f"\n{split_name.capitalize()} split processing complete: {len(final_df)} rows")
+    return final_df
+
+
 def main():
     """Main execution function for ML preprocessing and EDA."""
     print("=" * 60)
@@ -457,39 +511,44 @@ def main():
 
     multiprocessing.freeze_support()
 
-    # Step A1: Clean
-    cleaned_ml_df = clean_dataset_ml(
-        input_filename=INPUT_FILE,
-        output_filename=CLEANED_OUTPUT,
-        workers=NUM_WORKERS
-    )
-
-    if cleaned_ml_df.empty:
-        print("\nML Pipeline stopped: Could not load or clean input file.")
-        return
-
-    # Step A2: Deduplicate
-    deduped_ml_df = deduplicate_dataset_ml(
-        cleaned_ml_df,
-        output_filename=DEDUPED_OUTPUT
-    )
-
-    # Step A3: Filter by Length
-    final_ml_df = filter_by_length_ml(
-        deduped_ml_df,
-        output_filename=FINAL_OUTPUT,
-        min_len=MIN_TOKEN_LENGTH,
-        max_len=MAX_TOKEN_LENGTH
-    )
-
+    # Process each split - save to ML subdirectories
+    train_output_dir = os.path.join(OUTPUT_DIR, "train")
+    val_output_dir = os.path.join(OUTPUT_DIR, "validation")
+    test_output_dir = os.path.join(OUTPUT_DIR, "test")
+    
+    train_df = process_split(TRAIN_INPUT, "train", train_output_dir)
+    val_df = process_split(VAL_INPUT, "validation", val_output_dir)
+    test_df = process_split(TEST_INPUT, "test", test_output_dir)
+    
+    # Run EDA on each split separately
     print("\n" + "=" * 60)
     print("ML Preprocessing Pipeline (A1-A3) Complete")
-    print(f"Final dataset: {FINAL_OUTPUT}")
-    print(f"Total rows: {len(final_ml_df)}")
+    
+    if train_df is not None:
+        print(f"Train rows: {len(train_df)}")
+        train_eda_dir = os.path.join(EDA_OUTPUT_DIR, "train")
+        print(f"\nRunning EDA on train split...")
+        run_eda(train_df, train_eda_dir)
+    
+    if val_df is not None:
+        print(f"Validation rows: {len(val_df)}")
+        val_eda_dir = os.path.join(EDA_OUTPUT_DIR, "validation")
+        print(f"\nRunning EDA on validation split...")
+        run_eda(val_df, val_eda_dir)
+    
+    if test_df is not None:
+        print(f"Test rows: {len(test_df)}")
+        test_eda_dir = os.path.join(EDA_OUTPUT_DIR, "test")
+        print(f"\nRunning EDA on test split...")
+        run_eda(test_df, test_eda_dir)
+    
+    if train_df is not None and val_df is not None and test_df is not None:
+        total_rows = len(train_df) + len(val_df) + len(test_df)
+        print(f"\nTotal rows: {total_rows}")
+    else:
+        print("\nML Pipeline stopped: One or more splits failed to process.")
+    
     print("=" * 60)
-
-    # Run EDA
-    run_eda(final_ml_df, EDA_OUTPUT_DIR)
 
 
 if __name__ == "__main__":
