@@ -1,0 +1,122 @@
+{
+  "timestamp": "2025-11-29T15:01:18.598697",
+  "total_samples": 10,
+  "samples": [
+    {
+      "index": 6,
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "is_correct": true,
+      "confidence": 0.9995312690734863,
+      "keywords": [
+        "pay"
+      ],
+      "text_preview": "in the morning they traveled on until they came to a thick wood browse profiles find d1rty sluts 0nline here now there was a dead silence well of all the poisonous little beasts said peter and shrugge..."
+    },
+    {
+      "index": 8,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999746084213257,
+      "keywords": [
+        "cash",
+        "credit",
+        "price",
+        "eur"
+      ],
+      "text_preview": "attached is the book list for monday the 7th please review and notify of any changes that need to be made thanks susan trevino x31462 original message from wilson shona sent monday january 07 2002 842..."
+    },
+    {
+      "index": 9,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999737739562988,
+      "keywords": [
+        "account"
+      ],
+      "text_preview": "ok the role i envision would simply be a monitoring role i do not see any action on our part for now original message from shapiro richard sent monday october 22 2001 853 am to robertson linda subject..."
+    },
+    {
+      "index": 10,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999779462814331,
+      "keywords": [
+        "account",
+        "bill"
+      ],
+      "text_preview": "in regards to the billing of enron related oati services please complete the following starting february 1st entity epmie enron power marketing inc pse name epmiea please change the billing contact fr..."
+    },
+    {
+      "index": 14,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999775886535645,
+      "keywords": [
+        "cash"
+      ],
+      "text_preview": "louise i think the following is appropriate and i can get done dyer base same cash 50 equity 150 mcdonald base same cash 75 equity 200 parquet base same cash 100 equity 250 i know these are at the top..."
+    },
+    {
+      "index": 16,
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "is_correct": true,
+      "confidence": 0.9996306896209717,
+      "keywords": [
+        "money",
+        "price",
+        "thousand",
+        "hundred"
+      ],
+      "text_preview": "downloadable software ds is a rapidly growing company providing high quality software youve come to the right place if you need professionally implemented programming solutions for all kinds of usage ..."
+    },
+    {
+      "index": 18,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999738931655884,
+      "keywords": [
+        "fund",
+        "bank",
+        "credit"
+      ],
+      "text_preview": "hi noted that ice is competition i am not interested in us supporting that product at all i am still pushing campbell and others to use an alternate solution that gives us the advantage of seeing flow..."
+    },
+    {
+      "index": 19,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999634027481079,
+      "keywords": [
+        "cash",
+        "paid",
+        "bank",
+        "credit"
+      ],
+      "text_preview": "a source within the generator community confirms press reporting that coram energy plans to file an involuntary bankruptcy early next week through an intermediary we were able to corroborate this info..."
+    }
+  ]
+}

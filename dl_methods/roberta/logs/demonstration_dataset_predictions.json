@@ -1,0 +1,234 @@
+{
+  "metadata": {
+    "timestamp": "2025-11-29T08:21:20.351410",
+    "model_name": "RoBERTa",
+    "model_path": "dl_methods/roberta/model/best",
+    "dataset_path": "datasets/Demonstration dataset.csv",
+    "total_samples": 14,
+    "device": "cuda",
+    "max_len": 128,
+    "batch_size": 32
+  },
+  "summary": {
+    "total_samples": 14,
+    "prediction_distribution": {
+      "Great": 5,
+      "Bait": 9
+    },
+    "accuracy": 0.6428571428571429,
+    "correct_predictions": 9,
+    "average_confidence": 0.9136291742324829
+  },
+  "predictions": [
+    {
+      "sample_id": 0,
+      "title": "Remote employment opportunity",
+      "text": "Dear UofT Students and Staff,\n\nThe University of Toronto is pleased to announce specialized remote employment opportunities exclusively for our current students, staff members, and alumni. These positions are designed to provide meaningful professional experience while accommodating your academic and professional commitments.\n\nPOSITION HIGHLIGHTS:\n\nCompensation: $650 per week\nPerformance Bonus: $50 per completed assignment\nSchedule: Flexible hours\nLocation: Fully remote\nPOSITION REQUIREMENTS:\n\nMust be a current UofT student, staff member, or alumnus\nReliable internet connection and suitable remote work environment\nProficiency with standard productivity software\nStrong time management and communication skills\nMAKING AN IMPACT THROUGH REMOTE WORK:\nInspired by global organizations like [World Vision] that create opportunities for meaningful work regardless of location, these positions are designed to develop professional skills while contributing to important university initiatives.\n\nAPPLY NOW\n\nApplications will be reviewed by our hiring manager, John Haines, and selected candidates will be contacted for virtual interviews.\n\nApplications are processed on a rolling basis. We encourage interested candidates to apply early as positions are limited.\n\nBest regards,\nUniversity of Toronto Employment Services\n\nThis opportunity is exclusively for University of Toronto students, staff, and alumni.",
+      "combined_text": "Title: Remote employment opportunity\n\nDear UofT Students and Staff,\n\nThe University of Toronto is pleased to announce specialized remote employment opportunities exclusively for our current students, staff members, and alumni. These positions are designed to provide meaningful professional experience while accommodating your academic and professional commitments.\n\nPOSITION HIGHLIGHTS:\n\nCompensation: $650 per week\nPerformance Bonus: $50 per completed assignment\nSchedule: Flexible hours\nLocation: Fully remote\nPOSITION REQUIREMENTS:\n\nMust be a current UofT student, staff member, or alumnus\nReliable internet connection and suitable remote work environment\nProficiency with standard productivity software\nStrong time management and communication skills\nMAKING AN IMPACT THROUGH REMOTE WORK:\nInspired by global organizations like [World Vision] that create opportunities for meaningful work regardless of location, these positions are designed to develop professional skills while contributing to important university initiatives.\n\nAPPLY NOW\n\nApplications will be reviewed by our hiring manager, John Haines, and selected candidates will be contacted for virtual interviews.\n\nApplications are processed on a rolling basis. We encourage interested candidates to apply early as positions are limited.\n\nBest regards,\nUniversity of Toronto Employment Services\n\nThis opportunity is exclusively for University of Toronto students, staff, and alumni.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "confidence_score": 0.5017663240432739,
+      "probabilities": {
+        "Great": 0.5017663240432739,
+        "Bait": 0.4982336163520813
+      }
+    },
+    {
+      "sample_id": 1,
+      "title": "Duo push verification scam",
+      "text": "Security Notice:\nNOTE: Whenever you receive any DUO PUSH NOTIFICATION REQUEST sent to your duo mobile app TODAY or TOMORROW or ANYDAY/ANYTIME after sending your login information above, please accept it to proceed with your verification process, is that understood. I can log in anytime either today or tomorrow or any day to verify your account and proceed with your appointment, so once I send the push request, just know that it's me and please accept it to make it easier for me, else I will skip your verification process and move to another person immediately.",
+      "combined_text": "Title: Duo push verification scam\n\nSecurity Notice:\nNOTE: Whenever you receive any DUO PUSH NOTIFICATION REQUEST sent to your duo mobile app TODAY or TOMORROW or ANYDAY/ANYTIME after sending your login information above, please accept it to proceed with your verification process, is that understood. I can log in anytime either today or tomorrow or any day to verify your account and proceed with your appointment, so once I send the push request, just know that it's me and please accept it to make it easier for me, else I will skip your verification process and move to another person immediately.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.9331696033477783,
+      "probabilities": {
+        "Great": 0.0668303444981575,
+        "Bait": 0.9331696033477783
+      }
+    },
+    {
+      "sample_id": 2,
+      "title": "Tuition scam",
+      "text": "Dear Student,\n\nWe are writing to remind you that our records indicate your Fall 2025 tuition fees remain unpaid. As per the University of Toronto's Financial Aid & Registration Policy, an initial deposit of $2,000-$5,000 is required by today, August 31, 2025, in order to secure your course registration and maintain uninterrupted access to academic services.\n\nTo complete your payment, please send an Interac e-Transfer to the University's BACPURSE account using the following details:\n\nEmail: kellyvander9@outlook.com\nMessage/Memo: Please include your student\nnumber\n\nThis initial deposit is mandatory, even if you have applied for OSAP or are awaiting external funding. OSAP disbursements are typically processed after the term begins and therefore do not exempt students from the upfront deposit requirement.\n\nFailure to submit the initial deposit today may result in:\n\nRemoval from registered courses\nHolds on academic records (transcripts, graduation eligibility)\nLoss of access to academic platforms and online systems\nPotential administrative withdrawal\nTo help us update your file, please reply to this email today to:\n\nConfirm that your payment has been submitted (and attach the Interac e-Transfer confirmation email)\nNotify us of any issues or delays\nRequest financial assistance, if needed\nWe are committed to supporting you and ensuring your academic progress is not interrupted.\n\nNB: Before proceeding with the initial deposit, please send me a message to reconfirm the official University BACPRDSE Interac e-Transfer account email address. This is to ensure the accuracy of the payment details before the transfer is completed.\n\nSincerely,\nChun Li\nOffice of the Bursar\nFinancial Aid & Awards\nUniversity of Toronto",
+      "combined_text": "Title: Tuition scam\n\nDear Student,\n\nWe are writing to remind you that our records indicate your Fall 2025 tuition fees remain unpaid. As per the University of Toronto's Financial Aid & Registration Policy, an initial deposit of $2,000-$5,000 is required by today, August 31, 2025, in order to secure your course registration and maintain uninterrupted access to academic services.\n\nTo complete your payment, please send an Interac e-Transfer to the University's BACPURSE account using the following details:\n\nEmail: kellyvander9@outlook.com\nMessage/Memo: Please include your student\nnumber\n\nThis initial deposit is mandatory, even if you have applied for OSAP or are awaiting external funding. OSAP disbursements are typically processed after the term begins and therefore do not exempt students from the upfront deposit requirement.\n\nFailure to submit the initial deposit today may result in:\n\nRemoval from registered courses\nHolds on academic records (transcripts, graduation eligibility)\nLoss of access to academic platforms and online systems\nPotential administrative withdrawal\nTo help us update your file, please reply to this email today to:\n\nConfirm that your payment has been submitted (and attach the Interac e-Transfer confirmation email)\nNotify us of any issues or delays\nRequest financial assistance, if needed\nWe are committed to supporting you and ensuring your academic progress is not interrupted.\n\nNB: Before proceeding with the initial deposit, please send me a message to reconfirm the official University BACPRDSE Interac e-Transfer account email address. This is to ensure the accuracy of the payment details before the transfer is completed.\n\nSincerely,\nChun Li\nOffice of the Bursar\nFinancial Aid & Awards\nUniversity of Toronto",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.6740032434463501,
+      "probabilities": {
+        "Great": 0.3259967267513275,
+        "Bait": 0.6740032434463501
+      }
+    },
+    {
+      "sample_id": 3,
+      "title": "Fake student support program",
+      "text": "Dear Valued Student,\n\nWe are pleased to inform you that, as a currently enrolled student at the University of Toronto, you may be eligible for the Summer 2025 Bonus. This initiative is governed by the University's policies and regulations, specifically the Student Financial Aid and Awards policy (UT Policy #123).\n\nEligibility Criteria\nTo qualify, you must:\n\nBe a currently enrolled student at the University of Toronto\nHave actively used University of Toronto digital platforms, such as Microsoft account, ACORN, UTORid, and\nQuercus platforms during the academic year. Your participation and engagement have contributed significantly to our community, and we are grateful for your dedication\nHow to Claim Your Bonus\nTo claim your Summer Bonus, please use the alternative email address you provided. We recommend regularly checking and refreshing this email account to ensure timely receipt of future communications from our office.\n\nThis will help facilitate a smooth process for any further updates or notifications:\n\nFull Name\nPhone Number\nStudent ID\nAlternative email address\nPlease respond to this email with the required information by September 31, 2025. Only students who received this email are eligible for the bonus, and claims will be processed on a first-come, first-served basis.\n\nTerms and Conditions\n\nThe Summer 2025 Student Bonus is a one-time payment of $1,000-$10,000\nOnly students who received this email are eligible for the bonus\nClaims will be processed on a first-come, first-served basis\nThe University of Toronto reserves the right to verify eligibility and claim information\nApplying with an Alternative Email Address\nYou should apply using an alternative email address. Please ensure that you provide the required information (Full Name, Phone Number, and Student ID) accurately.\n\nFollow-up on Claim Status\nAfter submitting your claim, please follow up through the email address used for your application until your claim has been processed for payment. This will help us track your claim and address any potential issues promptly.\n\nPayment Processing\nOnce your claim is processed, the payment will be issued accordingly. If you have any questions or concerns regarding the status of your claim, please don't hesitate to reach out to us through the same email thread.\n\nWe appreciate your prompt response and look forward to recognizing your engagement with our university community.\n\nSincerely,\n\nDeyves Fonseca\nActing Chief Information Security Officer\nInformation Security\nUniversity of Toronto",
+      "combined_text": "Title: Fake student support program\n\nDear Valued Student,\n\nWe are pleased to inform you that, as a currently enrolled student at the University of Toronto, you may be eligible for the Summer 2025 Bonus. This initiative is governed by the University's policies and regulations, specifically the Student Financial Aid and Awards policy (UT Policy #123).\n\nEligibility Criteria\nTo qualify, you must:\n\nBe a currently enrolled student at the University of Toronto\nHave actively used University of Toronto digital platforms, such as Microsoft account, ACORN, UTORid, and\nQuercus platforms during the academic year. Your participation and engagement have contributed significantly to our community, and we are grateful for your dedication\nHow to Claim Your Bonus\nTo claim your Summer Bonus, please use the alternative email address you provided. We recommend regularly checking and refreshing this email account to ensure timely receipt of future communications from our office.\n\nThis will help facilitate a smooth process for any further updates or notifications:\n\nFull Name\nPhone Number\nStudent ID\nAlternative email address\nPlease respond to this email with the required information by September 31, 2025. Only students who received this email are eligible for the bonus, and claims will be processed on a first-come, first-served basis.\n\nTerms and Conditions\n\nThe Summer 2025 Student Bonus is a one-time payment of $1,000-$10,000\nOnly students who received this email are eligible for the bonus\nClaims will be processed on a first-come, first-served basis\nThe University of Toronto reserves the right to verify eligibility and claim information\nApplying with an Alternative Email Address\nYou should apply using an alternative email address. Please ensure that you provide the required information (Full Name, Phone Number, and Student ID) accurately.\n\nFollow-up on Claim Status\nAfter submitting your claim, please follow up through the email address used for your application until your claim has been processed for payment. This will help us track your claim and address any potential issues promptly.\n\nPayment Processing\nOnce your claim is processed, the payment will be issued accordingly. If you have any questions or concerns regarding the status of your claim, please don't hesitate to reach out to us through the same email thread.\n\nWe appreciate your prompt response and look forward to recognizing your engagement with our university community.\n\nSincerely,\n\nDeyves Fonseca\nActing Chief Information Security Officer\nInformation Security\nUniversity of Toronto",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.9965296387672424,
+      "probabilities": {
+        "Great": 0.003470364026725292,
+        "Bait": 0.9965296387672424
+      }
+    },
+    {
+      "sample_id": 4,
+      "title": "Notification of salary increase",
+      "text": "Dear University Community,\n\nFollowing up on last week's announcement, please find attached the official letter outlining your 16.89% salary increase, effective Monday, August 18, 2025.\n\nThe enclosed documents include all relevant details regarding this adjustment.\n\nAccess Instructions:\nTo review your salary, increment letter, please use the initial access code: Salary2025.\n\nShould you have any questions, feel free to reach out to the Payroll & Employee Relations team.\n\nBest regards,\n\nPayroll & Employee Relations\nUniversity of Toronto",
+      "combined_text": "Title: Notification of salary increase\n\nDear University Community,\n\nFollowing up on last week's announcement, please find attached the official letter outlining your 16.89% salary increase, effective Monday, August 18, 2025.\n\nThe enclosed documents include all relevant details regarding this adjustment.\n\nAccess Instructions:\nTo review your salary, increment letter, please use the initial access code: Salary2025.\n\nShould you have any questions, feel free to reach out to the Payroll & Employee Relations team.\n\nBest regards,\n\nPayroll & Employee Relations\nUniversity of Toronto",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "confidence_score": 0.9998098015785217,
+      "probabilities": {
+        "Great": 0.9998098015785217,
+        "Bait": 0.00019017000158783048
+      }
+    },
+    {
+      "sample_id": 5,
+      "title": "Fraudulent awards payment attempt",
+      "text": "SPRING 2025 STUDENT BONUS ANNOUNCEMENT\nDear Valued Student,\n\nWe are pleased to inform you that, as a currently enrolled student at the University of Toronto, you may be eligible for the Spring 2025 Bonus. This initiative is governed by the University's policies and regulations, specifically the Student Financial Aid and Awards policy (UT Policy #123).\n\nEligibility Criteria\nTo qualify, you must:\n\n- Be a currently enrolled student at the University of Toronto\n- Have actively used University of Calgary digital platforms, such as Microsoft account, ACORN, UTORid, and Quercus platforms during the academic year. Your participation and engagement have contributed significantly to our community, and we are grateful for your dedication.\n\nHow to Claim Your Bonus\n\nTo claim your Summer Bonus, please use the alternative email address you provided. We recommend regularly checking and refreshing this email account to ensure timely receipt of future communications from our office.\n\nThis will help facilitate a smooth process for any further updates or notifications:\n\nFull Name\nPhone Number\nStudent ID\nAlternative email address\n\nPlease respond to this email with the required information by May 30, 2025. Only students who received this email are eligible for the bonus, and claims will be processed on a first-come, first-served basis.\n\nTerms and Conditions\n- The Summer 2025 Student Bonus is a one-time payment of $1,000-$10,000\n- Only students who received this email are eligible for the bonus\n- Claims will be processed on a first-come, first-served basis\n- The University of Toronto reserves the right to verify eligibility and claim information\n\nIf you have any questions or concerns, please don't hesitate to reach out to us.\n\nSincerely,\n\nDeyves Fonseca\nActing Chief Information Security Officer\nInformation Security\nUniversity of Toronto\n\nAngelique Saweczko\nUniversity Registrar\nUniversity of Toronto",
+      "combined_text": "Title: Fraudulent awards payment attempt\n\nSPRING 2025 STUDENT BONUS ANNOUNCEMENT\nDear Valued Student,\n\nWe are pleased to inform you that, as a currently enrolled student at the University of Toronto, you may be eligible for the Spring 2025 Bonus. This initiative is governed by the University's policies and regulations, specifically the Student Financial Aid and Awards policy (UT Policy #123).\n\nEligibility Criteria\nTo qualify, you must:\n\n- Be a currently enrolled student at the University of Toronto\n- Have actively used University of Calgary digital platforms, such as Microsoft account, ACORN, UTORid, and Quercus platforms during the academic year. Your participation and engagement have contributed significantly to our community, and we are grateful for your dedication.\n\nHow to Claim Your Bonus\n\nTo claim your Summer Bonus, please use the alternative email address you provided. We recommend regularly checking and refreshing this email account to ensure timely receipt of future communications from our office.\n\nThis will help facilitate a smooth process for any further updates or notifications:\n\nFull Name\nPhone Number\nStudent ID\nAlternative email address\n\nPlease respond to this email with the required information by May 30, 2025. Only students who received this email are eligible for the bonus, and claims will be processed on a first-come, first-served basis.\n\nTerms and Conditions\n- The Summer 2025 Student Bonus is a one-time payment of $1,000-$10,000\n- Only students who received this email are eligible for the bonus\n- Claims will be processed on a first-come, first-served basis\n- The University of Toronto reserves the right to verify eligibility and claim information\n\nIf you have any questions or concerns, please don't hesitate to reach out to us.\n\nSincerely,\n\nDeyves Fonseca\nActing Chief Information Security Officer\nInformation Security\nUniversity of Toronto\n\nAngelique Saweczko\nUniversity Registrar\nUniversity of Toronto",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.9983774423599243,
+      "probabilities": {
+        "Great": 0.001622529816813767,
+        "Bait": 0.9983774423599243
+      }
+    },
+    {
+      "sample_id": 6,
+      "title": "Fraudulent overpayment attempt",
+      "text": "Dear Valued Student,\n\nWe are pleased to announce the Summer 2025 Student Bonus, a token of appreciation for your active engagement with the University of Toronto's digital platforms. As a freshman, sophomore, or senior student, you are eligible to receive a one-time bonus ranging from of $400-$3,000.\n\nTo qualify, you must have been actively using your Microsoft account, ACORN, UTORid, and Quercus platforms during the academic year. Your participation and engagement have contributed significantly to our community, and we are grateful for your dedication.\n\nTo claim your Summer 2025 Student Bonus, please provide the following information:\n\n- Full Name:\n- Phone Number:\n- Student ID:\n\nPlease respond to this email with the required information by 3/20/2025. Only students who received this email are eligible for the bonus, and claims will be processed on a first-come, first-served basis.\n\nWe appreciate your prompt response and look forward to rewarding your active engagement with our university community.\n\nEligibility Criteria:\n\n- Must be a currently enrolled freshman, sophomore, or senior student at the University of Toronto\n- Must have actively used Microsoft account, ACORN, UTORid, and Quercus platforms during the academic year\n- Must provide required information (Full Name, Phone Number, and Student ID) to claim the bonus\n\nTerms and Conditions:\n\n- The Summer 2025 Student Bonus is a one-time payment of $400-$3,000\n- Only students who received this email are eligible for the bonus\n- Claims will be processed on a first-come, first-served basis\n- The University of Toronto reserves the right to verify eligibility and claim information\n\nIf you have any questions or concerns, please do not hesitate to reach out to us.\n\nThank you for your ongoing engagement with our university community.\n\nBest regards,\n\nProfessor Phish, MEd (he/his)\nClaim Coordinator\nUniversity of Toronto",
+      "combined_text": "Title: Fraudulent overpayment attempt\n\nDear Valued Student,\n\nWe are pleased to announce the Summer 2025 Student Bonus, a token of appreciation for your active engagement with the University of Toronto's digital platforms. As a freshman, sophomore, or senior student, you are eligible to receive a one-time bonus ranging from of $400-$3,000.\n\nTo qualify, you must have been actively using your Microsoft account, ACORN, UTORid, and Quercus platforms during the academic year. Your participation and engagement have contributed significantly to our community, and we are grateful for your dedication.\n\nTo claim your Summer 2025 Student Bonus, please provide the following information:\n\n- Full Name:\n- Phone Number:\n- Student ID:\n\nPlease respond to this email with the required information by 3/20/2025. Only students who received this email are eligible for the bonus, and claims will be processed on a first-come, first-served basis.\n\nWe appreciate your prompt response and look forward to rewarding your active engagement with our university community.\n\nEligibility Criteria:\n\n- Must be a currently enrolled freshman, sophomore, or senior student at the University of Toronto\n- Must have actively used Microsoft account, ACORN, UTORid, and Quercus platforms during the academic year\n- Must provide required information (Full Name, Phone Number, and Student ID) to claim the bonus\n\nTerms and Conditions:\n\n- The Summer 2025 Student Bonus is a one-time payment of $400-$3,000\n- Only students who received this email are eligible for the bonus\n- Claims will be processed on a first-come, first-served basis\n- The University of Toronto reserves the right to verify eligibility and claim information\n\nIf you have any questions or concerns, please do not hesitate to reach out to us.\n\nThank you for your ongoing engagement with our university community.\n\nBest regards,\n\nProfessor Phish, MEd (he/his)\nClaim Coordinator\nUniversity of Toronto",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.8811213374137878,
+      "probabilities": {
+        "Great": 0.11887870728969574,
+        "Bait": 0.8811213374137878
+      }
+    },
+    {
+      "sample_id": 7,
+      "title": "Get Ready to Take Your Research to the Next Level",
+      "text": "Hello,\n\nThe Career Centre has shared with me some opportunities for jobs and conferences that may interest you.? My name is xxx and I am the Manager of Campus & Early Talent Recruitment for University Jobs Placement & Services, I'm reaching out to inform you of an exciting opportunity for students to provide feedback on our retail experience. We're seeking?students to participate in a paid evaluation program, sharing their honest opinions on our stores.\n\nInterns will work remotely, with flexible schedules accommodating up to 5-10 hours per week. A stipend of $600 per week will be provided. This program is open to all University of Toronto students, regardless of major.\n\nDue to limited positions, applications will be considered on a first-come, first-served basis.\n\nJob Description:\nAs a Store Evaluator/Mystery Shopper, you will play a vital role in helping us evaluate the quality of service provided by various retailers. Your tasks will include:\n\nVisiting assigned stores and making observations about the store's appearance, customer service, and product quality\nCompleting online surveys and providing detailed feedback about your shopping experience\nMaintaining confidentiality and professionalism throughout the evaluation process\nRequirements:\nCurrently enrolled as a student at a university or college in Florida\nAbility to work independently and maintain confidentiality\nExcellent observational and communication skills\nWhat We Offer:\nCompetitive hourly rate ($40-$60 per hour)\nFlexible scheduling to accommodate your academic commitments\nOpportunity to gain valuable work experience and skills in market research and customer service\nProfessional development and growth opportunities within our organization\nHow to Apply:\nIf interested, please forward the requested information below to (somekindof@externaldomain):\n\nResume\nAvailability (days/hours)\nContact information (phone number/email)\nDon't miss this opportunity to earn extra income, develop valuable skills and enhance your resume. We encourage qualified students to submit their applications promptly.",
+      "combined_text": "Title: Get Ready to Take Your Research to the Next Level\n\nHello,\n\nThe Career Centre has shared with me some opportunities for jobs and conferences that may interest you.? My name is xxx and I am the Manager of Campus & Early Talent Recruitment for University Jobs Placement & Services, I'm reaching out to inform you of an exciting opportunity for students to provide feedback on our retail experience. We're seeking?students to participate in a paid evaluation program, sharing their honest opinions on our stores.\n\nInterns will work remotely, with flexible schedules accommodating up to 5-10 hours per week. A stipend of $600 per week will be provided. This program is open to all University of Toronto students, regardless of major.\n\nDue to limited positions, applications will be considered on a first-come, first-served basis.\n\nJob Description:\nAs a Store Evaluator/Mystery Shopper, you will play a vital role in helping us evaluate the quality of service provided by various retailers. Your tasks will include:\n\nVisiting assigned stores and making observations about the store's appearance, customer service, and product quality\nCompleting online surveys and providing detailed feedback about your shopping experience\nMaintaining confidentiality and professionalism throughout the evaluation process\nRequirements:\nCurrently enrolled as a student at a university or college in Florida\nAbility to work independently and maintain confidentiality\nExcellent observational and communication skills\nWhat We Offer:\nCompetitive hourly rate ($40-$60 per hour)\nFlexible scheduling to accommodate your academic commitments\nOpportunity to gain valuable work experience and skills in market research and customer service\nProfessional development and growth opportunities within our organization\nHow to Apply:\nIf interested, please forward the requested information below to (somekindof@externaldomain):\n\nResume\nAvailability (days/hours)\nContact information (phone number/email)\nDon't miss this opportunity to earn extra income, develop valuable skills and enhance your resume. We encourage qualified students to submit their applications promptly.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "confidence_score": 0.9583835005760193,
+      "probabilities": {
+        "Great": 0.9583835005760193,
+        "Bait": 0.041616521775722504
+      }
+    },
+    {
+      "sample_id": 8,
+      "title": "You have been sent new employee benefits/salary",
+      "text": "Hello,\n\nYour employee benefits/salary have been updated for the upcoming fiscal year.\n\nTo confirm these benefits, please complete the attached form and reply with the filled-out document.\n\nScan the QR code using your phone to begin submitting the form.",
+      "combined_text": "Title: You have been sent new employee benefits/salary\n\nHello,\n\nYour employee benefits/salary have been updated for the upcoming fiscal year.\n\nTo confirm these benefits, please complete the attached form and reply with the filled-out document.\n\nScan the QR code using your phone to begin submitting the form.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.9906120896339417,
+      "probabilities": {
+        "Great": 0.009387883357703686,
+        "Bait": 0.9906120896339417
+      }
+    },
+    {
+      "sample_id": 9,
+      "title": "UofT IMPORTANT NOTICE: Verification Needed",
+      "text": "Your uoft account has been filed under the list of accounts set for deactivation due to retirement/graduation/freshers/full-time/part-time or transfer of the concerned account holder.\n\nBut the record shows you are still active in service and so advised to verify this request otherwise give us reason to deactivate your university account.\n\nPlease send the requested information below via EMAIL ONLY to [URL] to verify your uoft immediately to avoid deactivation and to book an appointment:\n\n* Full Name:\n* Cell Phone Number:\n* Campus Email:\n* JoinID/Username:\n* Passw0rd:\n* 6 digit duo passcode on your Duo Mobile (Kindly check your Duo Mobile)\n\nNOTE: Please check your Duo Mobile and fill in the 6-digit passcode above correctly and always send the new code if you mistakenly or consciously used the code you sent, make sure you send the new Duo code immediately.\n\nOR\n\nWhenever you receive any DUO PUSH NOTIFICATION REQUEST sent to your duo mobile app after sending the information above, please accept it to proceed with your verification process, is that understood?.\n\nPlease note the one-time submission and entry only.\n\nSend the requested information above, correctly, properly and accordingly.",
+      "combined_text": "Title: UofT IMPORTANT NOTICE: Verification Needed\n\nYour uoft account has been filed under the list of accounts set for deactivation due to retirement/graduation/freshers/full-time/part-time or transfer of the concerned account holder.\n\nBut the record shows you are still active in service and so advised to verify this request otherwise give us reason to deactivate your university account.\n\nPlease send the requested information below via EMAIL ONLY to [URL] to verify your uoft immediately to avoid deactivation and to book an appointment:\n\n* Full Name:\n* Cell Phone Number:\n* Campus Email:\n* JoinID/Username:\n* Passw0rd:\n* 6 digit duo passcode on your Duo Mobile (Kindly check your Duo Mobile)\n\nNOTE: Please check your Duo Mobile and fill in the 6-digit passcode above correctly and always send the new code if you mistakenly or consciously used the code you sent, make sure you send the new Duo code immediately.\n\nOR\n\nWhenever you receive any DUO PUSH NOTIFICATION REQUEST sent to your duo mobile app after sending the information above, please accept it to proceed with your verification process, is that understood?.\n\nPlease note the one-time submission and entry only.\n\nSend the requested information above, correctly, properly and accordingly.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.9994670748710632,
+      "probabilities": {
+        "Great": 0.0005329953855834901,
+        "Bait": 0.9994670748710632
+      }
+    },
+    {
+      "sample_id": 10,
+      "title": "Quishing message on LinkedIn",
+      "text": "This link works for anyone in your organization\n\nAttached is a brief presentation, please take a look and let me know if we could take on a joint development on this projects or any other means.\n\nScan the QR code using your phone to get started\n\n*QR code*\n\nMicrosoft respects your privacy. To learn more, please read our Privacy Statement.\n\nMicrosoft Corporate, one Microsoft Way, Redmond, WA 98052",
+      "combined_text": "Title: Quishing message on LinkedIn\n\nThis link works for anyone in your organization\n\nAttached is a brief presentation, please take a look and let me know if we could take on a joint development on this projects or any other means.\n\nScan the QR code using your phone to get started\n\n*QR code*\n\nMicrosoft respects your privacy. To learn more, please read our Privacy Statement.\n\nMicrosoft Corporate, one Microsoft Way, Redmond, WA 98052",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "confidence_score": 0.9786025881767273,
+      "probabilities": {
+        "Great": 0.9786025881767273,
+        "Bait": 0.021397355943918228
+      }
+    },
+    {
+      "sample_id": 11,
+      "title": "EMPLOYMENT OFFER!",
+      "text": "Dear candidate,\n\nI am em?iling you c?ncerning a ne? empl?yment ?ffer thr?ugh the University's recruiting dep?rtment. ?ffering a p?rt time p?sition th?t will ?nly require 1-2hrs 3 d?ys a ?eek, no w?rk experience ?r skill is required. Y?u can m?ke $?650?00USD weekly with?ut affecting y?ur regul?r ?ctivities and ?c?demics\n\nTo ?pply, kindly f?llow the link.\n\n[URL]\n\n[EMAIL]\n\n[URL]\nUofT Empl?yee Self-Service\nCopyright 2024 all rights reserved.",
+      "combined_text": "Title: EMPLOYMENT OFFER!\n\nDear candidate,\n\nI am em?iling you c?ncerning a ne? empl?yment ?ffer thr?ugh the University's recruiting dep?rtment. ?ffering a p?rt time p?sition th?t will ?nly require 1-2hrs 3 d?ys a ?eek, no w?rk experience ?r skill is required. Y?u can m?ke $?650?00USD weekly with?ut affecting y?ur regul?r ?ctivities and ?c?demics\n\nTo ?pply, kindly f?llow the link.\n\n[URL]\n\n[EMAIL]\n\n[URL]\nUofT Empl?yee Self-Service\nCopyright 2024 all rights reserved.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.999911904335022,
+      "probabilities": {
+        "Great": 8.805461402516812e-05,
+        "Bait": 0.999911904335022
+      }
+    },
+    {
+      "sample_id": 12,
+      "title": "Today is U of T Giving Day - Give & Claim Your Reward!",
+      "text": "Hi,\n\nToday marks the third annual University of Toronto Giving Day!\n\nAs an alumnus and current Vice-President and Provost of the University of Toronto, I am honored to announce to you of the new development of accepting cryptocurrencies for the third annual giving day.\n\nThis is yet another wonderful opportunity for you as a valued member of the U of T community, to get involved in making a difference and support inclusive excellence at U of T by Giving in Crypto!\n\nWe continually acknowledge how incredibly rewarding it is to play a role in supporting revolutionary advances in research, help students gain vital critical thinking skills and invest in the success of the next generation of leaders.\n\nWe are excited about what the future holds in the Crypto and Blockchain Space and believe that we've just scratched the surface of its through revolutionary advances in research.\n\nWith the value of many cryptocurrencies rising, the University of Toronto community is in a position to make a wide-reaching impact, and we can do even more with the support of our community behind us.\n\nToday I invite you to get involved by donating crypto in any amount to U of T [URL]\n\nYour contribution will immediately impact students and researchers at the University of Toronto, including by reducing financial stress so they can focus on making a difference in the world.\n\nNOTE: As a gesture of appreciation, the first 150 new crypto donors will get Alienware m18 R2 Gaming Laptop as a reward from U of T.\n\nThank you so much for your support, and for being an important part of the University of Toronto community.\n\nWith gratitude,\n\n[EMAIL]\n\nP.S. There a limited time to make this donation! Please make a crypto gift now at U of T.",
+      "combined_text": "Title: Today is U of T Giving Day - Give & Claim Your Reward!\n\nHi,\n\nToday marks the third annual University of Toronto Giving Day!\n\nAs an alumnus and current Vice-President and Provost of the University of Toronto, I am honored to announce to you of the new development of accepting cryptocurrencies for the third annual giving day.\n\nThis is yet another wonderful opportunity for you as a valued member of the U of T community, to get involved in making a difference and support inclusive excellence at U of T by Giving in Crypto!\n\nWe continually acknowledge how incredibly rewarding it is to play a role in supporting revolutionary advances in research, help students gain vital critical thinking skills and invest in the success of the next generation of leaders.\n\nWe are excited about what the future holds in the Crypto and Blockchain Space and believe that we've just scratched the surface of its through revolutionary advances in research.\n\nWith the value of many cryptocurrencies rising, the University of Toronto community is in a position to make a wide-reaching impact, and we can do even more with the support of our community behind us.\n\nToday I invite you to get involved by donating crypto in any amount to U of T [URL]\n\nYour contribution will immediately impact students and researchers at the University of Toronto, including by reducing financial stress so they can focus on making a difference in the world.\n\nNOTE: As a gesture of appreciation, the first 150 new crypto donors will get Alienware m18 R2 Gaming Laptop as a reward from U of T.\n\nThank you so much for your support, and for being an important part of the University of Toronto community.\n\nWith gratitude,\n\n[EMAIL]\n\nP.S. There a limited time to make this donation! Please make a crypto gift now at U of T.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "confidence_score": 0.9969134330749512,
+      "probabilities": {
+        "Great": 0.9969134330749512,
+        "Bait": 0.0030865829903632402
+      }
+    },
+    {
+      "sample_id": 13,
+      "title": "UOFT ALERT: Jobs for UofT Students",
+      "text": "You have been offered a Job Opportunity at the convenience of your home or school, Which serves as a gateway to pay all expenses incurred on campus. This opportunity should be done at leisure time and taking at most 1 hr/day, 2 to 3 times a week and earning 1200 CAD biweekly. It's a Flexible opportunity where you will determine your working time. All the tasks are work from home/on campus/your city job. You don't need to travel anywhere because all tasks are within your city and also you don't need to have a car to get started. It's a home base office work, you can be in any location and work from your home/school.\n\nTo apply for this position, kindly send the requested information below via EMAIL ONLY or to [URL]\n\n* Full Name:\n* Full Address:\n* Personal Email:\n* Campus Email:\n* Cell Phone Number:\n* WhatsAPP Phone Number:\n* DOB:\n* College Name:\n* Major:\n* How many hours are you willing to work:\n* Do you speak and understand English Language:\n\nNOTE: All the information above should be sent via EMAIL ONLY and you will be contacted within 24 to 48 hours with the job details and how to proceed after you applied and send the complete and correct information above accordingly.",
+      "combined_text": "Title: UOFT ALERT: Jobs for UofT Students\n\nYou have been offered a Job Opportunity at the convenience of your home or school, Which serves as a gateway to pay all expenses incurred on campus. This opportunity should be done at leisure time and taking at most 1 hr/day, 2 to 3 times a week and earning 1200 CAD biweekly. It's a Flexible opportunity where you will determine your working time. All the tasks are work from home/on campus/your city job. You don't need to travel anywhere because all tasks are within your city and also you don't need to have a car to get started. It's a home base office work, you can be in any location and work from your home/school.\n\nTo apply for this position, kindly send the requested information below via EMAIL ONLY or to [URL]\n\n* Full Name:\n* Full Address:\n* Personal Email:\n* Campus Email:\n* Cell Phone Number:\n* WhatsAPP Phone Number:\n* DOB:\n* College Name:\n* Major:\n* How many hours are you willing to work:\n* Do you speak and understand English Language:\n\nNOTE: All the information above should be sent via EMAIL ONLY and you will be contacted within 24 to 48 hours with the job details and how to proceed after you applied and send the complete and correct information above accordingly.",
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "confidence_score": 0.8821399807929993,
+      "probabilities": {
+        "Great": 0.11785995960235596,
+        "Bait": 0.8821399807929993
+      }
+    }
+  ]
+}
