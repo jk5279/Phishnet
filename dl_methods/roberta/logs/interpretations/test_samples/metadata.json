@@ -1,0 +1,227 @@
+{
+  "timestamp": "2025-11-29T14:49:35.922192",
+  "test_dataset_path": "cleaned_data/DL/test/test_split.csv",
+  "total_test_samples": 14811,
+  "selected_samples": [
+    {
+      "sample_id": 0,
+      "original_index_in_test": 0,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999725818634033,
+      "text_preview": "my first shot at the 3025 sambactdb packages are at [url] i still have to deal with the collateral i..."
+    },
+    {
+      "sample_id": 1,
+      "original_index_in_test": 1,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999752044677734,
+      "text_preview": "original message from matthias saou [mailto[email]] sent monday august 19 2002 525 pm to [email] sub..."
+    },
+    {
+      "sample_id": 2,
+      "original_index_in_test": 2,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999674558639526,
+      "text_preview": "turns out we dont have an inspiron 6000 upstairs but instead have a 1000 or 1100 instead still has a..."
+    },
+    {
+      "sample_id": 3,
+      "original_index_in_test": 3,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999762773513794,
+      "text_preview": "the past six months certainly have been challenging for all of us at enron with so much change and u..."
+    },
+    {
+      "sample_id": 4,
+      "original_index_in_test": 4,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999736547470093,
+      "text_preview": "why are you going to the dr original message from maggi mike sent tuesday october 23 2001 330 pm to ..."
+    },
+    {
+      "sample_id": 5,
+      "original_index_in_test": 5,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999750852584839,
+      "text_preview": "on 5 jul 0024 [email] ken foskey wrote on wed 20070704 at 1900 0200 martin barth wrote hi if devicet..."
+    },
+    {
+      "sample_id": 6,
+      "original_index_in_test": 6,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999071359634399,
+      "text_preview": "to view the color version of this message or if the links below do not work properly click here [url..."
+    },
+    {
+      "sample_id": 7,
+      "original_index_in_test": 7,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999771118164062,
+      "text_preview": "louise i understand that there s a lot of discussion going on about the approach to organizing our t..."
+    },
+    {
+      "sample_id": 8,
+      "original_index_in_test": 8,
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "is_correct": true,
+      "confidence": 0.999900221824646,
+      "text_preview": "monkeyorg server notification email updatedear jose the password to your email [email] is expiring o..."
+    },
+    {
+      "sample_id": 9,
+      "original_index_in_test": 9,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9989728927612305,
+      "text_preview": "aep benefit meetings aep will be in houston conducting benefit meetings these meetings are designed ..."
+    },
+    {
+      "sample_id": 10,
+      "original_index_in_test": 10,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999749660491943,
+      "text_preview": "on wed may 09 2007 at 062354pm 0700 herb lewis wrote in the file sourcelibutilc is there some reason..."
+    },
+    {
+      "sample_id": 11,
+      "original_index_in_test": 11,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999769926071167,
+      "text_preview": "sayed irfan irfan hi all i need to use cqperlext module in my perl script i searched cpan but did no..."
+    },
+    {
+      "sample_id": 12,
+      "original_index_in_test": 12,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999566078186035,
+      "text_preview": "friday 18 may 2007 1800 gmt 1400 0400canadaeastern search bbc sport football new wembley rolls out r..."
+    },
+    {
+      "sample_id": 13,
+      "original_index_in_test": 13,
+      "true_label": 1,
+      "true_label_name": "Bait",
+      "predicted_label": 1,
+      "predicted_label_name": "Bait",
+      "is_correct": true,
+      "confidence": 0.9999444484710693,
+      "text_preview": "walters company from the office of the manager walters gate company import and export world trade ce..."
+    },
+    {
+      "sample_id": 14,
+      "original_index_in_test": 14,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.99994957447052,
+      "text_preview": "postdoctoral position at university of washington seattle the department of computer science enginee..."
+    },
+    {
+      "sample_id": 15,
+      "original_index_in_test": 15,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999732971191406,
+      "text_preview": "xms new system effective we have a new system to prepare expense reports called expense reporting sy..."
+    },
+    {
+      "sample_id": 16,
+      "original_index_in_test": 16,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999750852584839,
+      "text_preview": "i think the methanol plant is still down the buyback should apply for any volumes in july below thei..."
+    },
+    {
+      "sample_id": 17,
+      "original_index_in_test": 17,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999741315841675,
+      "text_preview": "hello i finally run my measurement model in sem successfully now i am trying to print out the path d..."
+    },
+    {
+      "sample_id": 18,
+      "original_index_in_test": 18,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999771118164062,
+      "text_preview": "i wish i was goingif only it were another nightoh well have fun to whoever is going itll be somethin..."
+    },
+    {
+      "sample_id": 19,
+      "original_index_in_test": 19,
+      "true_label": 0,
+      "true_label_name": "Great",
+      "predicted_label": 0,
+      "predicted_label_name": "Great",
+      "is_correct": true,
+      "confidence": 0.9999749660491943,
+      "text_preview": "i dont think this should play games with scripts being overridden or whatever if a bootstrap script ..."
+    }
+  ]
+}

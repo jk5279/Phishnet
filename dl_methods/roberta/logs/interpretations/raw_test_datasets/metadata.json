@@ -1,0 +1,174 @@
+{
+  "timestamp": "2025-11-29T15:07:34.172909",
+  "source_directory": "datasets/raw - DO NOT OVERWRITE/test_datasets",
+  "files_processed": [
+    {
+      "file_name": "Emails_generated_by_Abhay.csv",
+      "total_samples": 53,
+      "processed_samples": 5,
+      "samples": [
+        {
+          "sample_id": 0,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9997169375419617,
+          "text_preview": "URGENT: Your University Email Account Will Be Suspended Dear Student, Our security system has detected multiple unauthorized login attempts to your university email account from unrecognized devices i..."
+        },
+        {
+          "sample_id": 1,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9996919631958008,
+          "text_preview": "Critical Security Alert: Your Banking Profile Requires Immediate Verification Valued Customer, Our fraud detection system has flagged several suspicious transactions on your account that appear incons..."
+        },
+        {
+          "sample_id": 2,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9784973859786987,
+          "text_preview": "Final Notice: Your Amazon Prime Membership Payment Failed Dear Amazon Customer, We were unable to process the recent payment for your Amazon Prime membership renewal due to an issue with your stored p..."
+        },
+        {
+          "sample_id": 3,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9982907176017761,
+          "text_preview": "Microsoft 365 Security Breach Detection - Immediate Action Required Important Security Notification: We've detected unusual sign-in activity to your Microsoft 365 account from a new device in an unfam..."
+        },
+        {
+          "sample_id": 4,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9998432397842407,
+          "text_preview": "PayPal Account Limited - Suspicious Activity Detected Urgent Account Notification: We've identified potentially unauthorized access to your PayPal account and have implemented temporary security restr..."
+        }
+      ]
+    },
+    {
+      "file_name": "Emails_generated_by_Darya.csv",
+      "total_samples": 59,
+      "processed_samples": 5,
+      "samples": [
+        {
+          "sample_id": 0,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.8393788933753967,
+          "text_preview": "Hi,\nWe trust you're doing well!\n\nThis is a quick confirmation that your McAfee Scan subscription has been successfully renewed. Thank you for your ongoing support.\n\nRenewal details:\n\nService: McAfee S..."
+        },
+        {
+          "sample_id": 1,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.8531375527381897,
+          "text_preview": "Hi there,\nYour recent purchase with **Geek Squad** has been successfully processed. Here\u2019s your invoice for your reference:\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83e\uddfe Invoice ID: INV- 570739\n\ud83d\udce6 Product/Service: PC Diagnos..."
+        },
+        {
+          "sample_id": 2,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9684208631515503,
+          "text_preview": "Hello Valued User,\nThis is a quick reminder about your recent PayPal \u2192 BTC transaction. Your payment information is shown below for your confirmation and record keeping.\n\nInvoice ID: INV- 949958\nTrans..."
+        },
+        {
+          "sample_id": 3,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9970844388008118,
+          "text_preview": "Dear Valued Customer,\nYour PayPal to Bitcoin transaction has been completed successfully and securely. Below are the details of your successful purchase:\n\n---\n\ud83d\udccb Transaction Details\nInvoice No: INV- 94..."
+        },
+        {
+          "sample_id": 4,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.8040497303009033,
+          "text_preview": "Support Contact: 808/225-4120\nHello\n\nWe are writing to confirm that, as per our agreement, your Five Years membership under the GeekSquad Plan has been successfully renewed. A total of $481.18 has bee..."
+        }
+      ]
+    },
+    {
+      "file_name": "Emails_generated_by_Marc.csv",
+      "total_samples": 70,
+      "processed_samples": 5,
+      "samples": [
+        {
+          "sample_id": 0,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.5771237015724182,
+          "text_preview": "Subject: Important Update: Salary Adjustment Notification\\n\\nDear UC Berkeley Staff Member,\\n\\nWe are pleased to inform you that following a recent departmental review, your compensation package has b..."
+        },
+        {
+          "sample_id": 1,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9719194769859314,
+          "text_preview": "Subject: Calendar Alert: Payment Overdue Notification\\n\\nDear Student,\\n\\nYou\u0092ve been added to a secure billing calendar due to an unresolved payment linked to your student account. The meeting includ..."
+        },
+        {
+          "sample_id": 2,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.824612021446228,
+          "text_preview": "Subject: Free Musical Instrument Giveaway \u0097 Claim Yours Today\\n\\nHi there,\\n\\nI\u0092m a retiring faculty member from the Music Department and I\u0092m donating several instruments to students who are passionat..."
+        },
+        {
+          "sample_id": 3,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.9990236759185791,
+          "text_preview": "Subject: ACH Payment Confirmation Required\\n\\nDear UC Berkeley Account Holder,\\n\\nWe\u0092ve received a notification regarding a pending ACH transfer linked to your student billing profile. This transactio..."
+        },
+        {
+          "sample_id": 4,
+          "predicted_label": 0,
+          "predicted_label_name": "Great",
+          "confidence": 0.9884318709373474,
+          "text_preview": "Subject: bCourses Access Request Audit\\n\\nDear Faculty Member,\\n\\nWe\u0092ve received a request from a former Summer Session student attempting to gain access to multiple bCourses sections. This request is..."
+        }
+      ]
+    },
+    {
+      "file_name": "Emails_generated_by_Owais.csv",
+      "total_samples": 60,
+      "processed_samples": 5,
+      "samples": [
+        {
+          "sample_id": 0,
+          "predicted_label": 1,
+          "predicted_label_name": "Bait",
+          "confidence": 0.5441287755966187,
+          "text_preview": "Subject: Research Assistant Position \u2013 Immediate Start. Dear Student, We are pleased to inform you that you have been shortlisted for a paid Research Assistant position under the Faculty of Arts & Sci..."
+        },
+        {
+          "sample_id": 1,
+          "predicted_label": 0,
+          "predicted_label_name": "Great",
+          "confidence": 0.9641539454460144,
+          "text_preview": "Subject: Confirmation Required \u2013 Fall 2025 Scholarship Disbursement. Dear Student, Congratulations! You have been selected to receive the Fall 2025 Academic Excellence Scholarship. To process your dis..."
+        },
+        {
+          "sample_id": 2,
+          "predicted_label": 0,
+          "predicted_label_name": "Great",
+          "confidence": 0.9473093152046204,
+          "text_preview": "Subject: URGENT: Fall 2025 Tuition Deposit Required. Dear Student, Our records indicate that your Fall 2025 tuition deposit remains unpaid. To avoid deregistration, please submit your payment today. P..."
+        },
+        {
+          "sample_id": 3,
+          "predicted_label": 0,
+          "predicted_label_name": "Great",
+          "confidence": 0.9878199100494385,
+          "text_preview": "Subject: Career Centre Referral \u2013 Paid Campus Role. Dear Student, The Career Centre is pleased to refer you to a paid opportunity with a U of T-affiliated partner. This role offers flexible hours and ..."
+        },
+        {
+          "sample_id": 4,
+          "predicted_label": 0,
+          "predicted_label_name": "Great",
+          "confidence": 0.837104082107544,
+          "text_preview": "Subject: Emergency Bursary Available \u2013 Immediate Action Required. Dear Student, Due to recent economic challenges, the University is offering a one-time Emergency Bursary of $1,200 CAD to eligible stu..."
+        }
+      ]
+    }
+  ]
+}
