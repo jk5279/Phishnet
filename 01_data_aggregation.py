@@ -49,9 +49,9 @@ FINAL_OUTPUT = os.path.join(OUTPUT_DIR, "master_email_dataset_final.csv")
 DATASET1_OUTPUT = os.path.join(OUTPUT_DIR, "dataset1_processed.csv")
 DATASET2_OUTPUT = os.path.join(OUTPUT_DIR, "dataset2_processed.csv")
 DATASET3_OUTPUT = os.path.join(OUTPUT_DIR, "dataset3_combined.csv")
-TRAIN_OUTPUT = os.path.join(OUTPUT_DIR, "train_split.csv")
-VAL_OUTPUT = os.path.join(OUTPUT_DIR, "validation_split.csv")
-TEST_OUTPUT = os.path.join(OUTPUT_DIR, "test_split.csv")
+TRAIN_OUTPUT = os.path.join(OUTPUT_DIR, "train", "train_split.csv")
+VAL_OUTPUT = os.path.join(OUTPUT_DIR, "validation", "validation_split.csv")
+TEST_OUTPUT = os.path.join(OUTPUT_DIR, "test", "test_split.csv")
 
 # Processing thresholds
 MIN_TEXT_LENGTH = 50

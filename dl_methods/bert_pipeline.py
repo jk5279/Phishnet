@@ -41,8 +41,8 @@ if __name__ == "__main__":
     
     # These paths assume standard directory structure from data aggregation
     pipeline.run(
-        train_path="cleaned_data/train_split.csv",
-        val_path="cleaned_data/validation_split.csv",
-        test_path="cleaned_data/test_split.csv"
+        train_path="cleaned_data/train/train_split.csv",
+        val_path="cleaned_data/validation/validation_split.csv",
+        test_path="cleaned_data/test/test_split.csv"
     )
 

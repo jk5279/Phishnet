@@ -1,0 +1,33 @@
+============================================================
+ML Model Evaluation Report
+============================================================
+
+Timestamp: 2025-11-28T22:01:30.323311
+Model: Naive Bayes (Baseline)
+
+Best Hyperparameters:
+  clf__alpha: 0.1
+  preprocessor__text__max_features: 20000
+  preprocessor__text__ngram_range: (1, 1)
+
+Cross-Validation Score: 0.9497
+
+Test Set Metrics:
+  Accuracy: 0.9475 (94.75%)
+  Precision (weighted): 0.9482
+  Recall (weighted): 0.9475
+  F1 Score (weighted): 0.9474
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      0.97      0.95      8128
+           1       0.96      0.91      0.94      6380
+
+    accuracy                           0.95     14508
+   macro avg       0.95      0.94      0.95     14508
+weighted avg       0.95      0.95      0.95     14508
+
+Confusion Matrix:
+[[7911  217]
+ [ 544 5836]]

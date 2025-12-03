@@ -1,0 +1,35 @@
+============================================================
+DL Model Evaluation Report
+============================================================
+
+Timestamp: 2025-11-29T04:36:27.767635
+Model: DistilBERT
+
+Best Hyperparameters:
+  learning_rate: 2e-05
+  batch_size: 32
+  epochs: 5
+  max_len: 128
+  warmup_steps: 500
+
+Best Validation Accuracy: 0.9862 (98.62%)
+
+Test Set Metrics:
+  Accuracy: 0.9844 (98.44%)
+  Precision (weighted): 0.9844
+  Recall (weighted): 0.9844
+  F1 Score (weighted): 0.9844
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.98      0.99      0.99      8381
+           1       0.99      0.98      0.98      6430
+
+    accuracy                           0.98     14811
+   macro avg       0.98      0.98      0.98     14811
+weighted avg       0.98      0.98      0.98     14811
+
+Confusion Matrix:
+[[8306   75]
+ [ 156 6274]]

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-11-28T22:01:30.318131",
+  "model_name": "Naive Bayes (Baseline)",
+  "best_hyperparameters": {
+    "clf__alpha": 0.1,
+    "preprocessor__text__max_features": 20000,
+    "preprocessor__text__ngram_range": [
+      1,
+      1
+    ]
+  },
+  "metrics": {
+    "cross_validation_score": 0.9496749537411444,
+    "test_accuracy": 0.9475461814171492,
+    "test_precision_weighted": 0.9481883400662008,
+    "test_recall_weighted": 0.9475461814171492,
+    "test_f1_weighted": 0.9473735563227079
+  },
+  "confusion_matrix": [
+    [
+      7911,
+      217
+    ],
+    [
+      544,
+      5836
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n           0       0.94      0.97      0.95      8128\n           1       0.96      0.91      0.94      6380\n\n    accuracy                           0.95     14508\n   macro avg       0.95      0.94      0.95     14508\nweighted avg       0.95      0.95      0.95     14508\n"
+}

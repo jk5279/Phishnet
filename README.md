@@ -97,9 +97,9 @@ The complete pipeline consists of 6 sequential scripts:
 - `cleaned_data/dataset1_processed.csv` - Processed training source data
 - `cleaned_data/dataset2_processed.csv` - Processed test datasets
 - `cleaned_data/dataset3_combined.csv` - Combined sampled dataset
-- `cleaned_data/train_split.csv` - Training set (70%)
-- `cleaned_data/validation_split.csv` - Validation set (15%)
-- `cleaned_data/test_split.csv` - Test set (15%)
+- `cleaned_data/train/train_split.csv` - Training set (70%)
+- `cleaned_data/validation/validation_split.csv` - Validation set (15%)
+- `cleaned_data/test/test_split.csv` - Test set (15%)
 
 **Usage**:
 ```bash
@@ -133,11 +133,11 @@ python 01_data_aggregation.py
   - N-gram analysis
   - Word clouds
 
-**Input**: `cleaned_data/master_email_dataset_final.csv`
+**Input**: `cleaned_data/dataset3_combined.csv` (from 01_data_aggregation.py)
 
 **Output**: 
-- `cleaned_data/ml_dataset_final.csv`
-- `eda_outputs/ml_*.png` (EDA visualizations)
+- `cleaned_data/ml_cleaning/ml_dataset_final.csv`
+- `eda_outputs/ml_cleaning/*.png` (EDA visualizations)
 
 **Usage**:
 ```bash
@@ -161,11 +161,11 @@ python 02_ml_preprocessing_eda.py
 - Length filtering (5-2000 tokens)
 - Generates DL-specific EDA visualizations
 
-**Input**: `cleaned_data/master_email_dataset_final.csv`
+**Input**: `cleaned_data/dataset3_combined.csv` (from 01_data_aggregation.py)
 
 **Output**: 
-- `cleaned_data/dl_dataset_final.csv`
-- `eda_outputs/dl_*.png` (EDA visualizations)
+- `cleaned_data/dl_cleaning/dl_dataset_final.csv`
+- `eda_outputs/dl_cleaning/dl_*.png` (EDA visualizations)
 
 **Usage**:
 ```bash
@@ -196,7 +196,7 @@ python 03_dl_preprocessing_eda.py
 7. Evaluates models with comprehensive metrics
 8. Saves best model for inference
 
-**Input**: `cleaned_data/ml_dataset_final.csv`
+**Input**: `cleaned_data/ml_cleaning/ml_dataset_final.csv`
 
 **Output**:
 - `models/ml_best_model.pkl` (best trained model)
@@ -242,7 +242,7 @@ python 04_ml_pipeline.py
 7. Saves best model (highest test accuracy) and final model
 8. Saves training curves, evaluation logs, and visualizations
 
-**Input**: `cleaned_data/dl_dataset_final.csv`
+**Input**: `cleaned_data/dl_cleaning/dl_dataset_final.csv`
 
 **Output**:
 - `models/dl_model_best/` (best model based on test accuracy)
@@ -494,12 +494,12 @@ This will run example predictions using both ML and DL models.
 - `cleaned_data/dataset1_processed.csv` - Processed training source data
 - `cleaned_data/dataset2_processed.csv` - Processed test datasets
 - `cleaned_data/dataset3_combined.csv` - Combined sampled dataset
-- `cleaned_data/train_split.csv` - Training set (70%)
-- `cleaned_data/validation_split.csv` - Validation set (15%)
-- `cleaned_data/test_split.csv` - Test set (15%)
+- `cleaned_data/train/train_split.csv` - Training set (70%)
+- `cleaned_data/validation/validation_split.csv` - Validation set (15%)
+- `cleaned_data/test/test_split.csv` - Test set (15%)
 - `cleaned_data/master_email_dataset_final.csv` - Legacy/Intermediate aggregated dataset
-- `cleaned_data/ml_dataset_final.csv` - ML-ready dataset
-- `cleaned_data/dl_dataset_final.csv` - DL-ready dataset
+- `cleaned_data/ml_cleaning/ml_dataset_final.csv` - ML-ready dataset
+- `cleaned_data/dl_cleaning/dl_dataset_final.csv` - DL-ready dataset
 
 ### Model Files
 - `models/ml_best_model.pkl` - Best ML model (pickled sklearn pipeline)

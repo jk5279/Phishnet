@@ -10,7 +10,18 @@ and generates exploratory data analysis visualizations:
 3. Length filtering (5-2000 tokens)
 4. EDA visualizations (distributions, correlations, n-grams, word clouds)
 
-Output: cleaned_data/dl_dataset_final.csv and eda_outputs/dl_*.png
+Output: 
+- cleaned_data/DL/train/train_split.csv (processed train set)
+- cleaned_data/DL/validation/validation_split.csv (processed validation set)
+- cleaned_data/DL/test/test_split.csv (processed test set)
+- eda_outputs/dl_cleaning/train/dl_*.png (EDA visualizations for train split)
+- eda_outputs/dl_cleaning/validation/dl_*.png (EDA visualizations for validation split)
+- eda_outputs/dl_cleaning/test/dl_*.png (EDA visualizations for test split)
+
+Input: 
+- cleaned_data/train_split.csv (from 01_data_aggregation.py)
+- cleaned_data/validation_split.csv (from 01_data_aggregation.py)
+- cleaned_data/test_split.csv (from 01_data_aggregation.py)
 """
 
 import os
@@ -39,12 +50,11 @@ warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 # =========================
 
 # Input/Output paths
-INPUT_FILE = os.path.join("cleaned_data", "master_email_dataset_final.csv")
-OUTPUT_DIR = "cleaned_data"
-EDA_OUTPUT_DIR = "eda_outputs"
-CLEANED_OUTPUT = os.path.join(OUTPUT_DIR, "dl_dataset_cleaned.csv")
-DEDUPED_OUTPUT = os.path.join(OUTPUT_DIR, "dl_dataset_deduped.csv")
-FINAL_OUTPUT = os.path.join(OUTPUT_DIR, "dl_dataset_final.csv")
+TRAIN_INPUT = os.path.join("cleaned_data", "train_split.csv")
+VAL_INPUT = os.path.join("cleaned_data", "validation_split.csv")
+TEST_INPUT = os.path.join("cleaned_data", "test_split.csv")
+OUTPUT_DIR = os.path.join("cleaned_data", "DL")
+EDA_OUTPUT_DIR = "eda_outputs/dl_cleaning"
 
 # Preprocessing settings
 MIN_TOKEN_LENGTH = 5
@@ -240,12 +250,59 @@ def setup_nltk():
 def plot_target_distribution(df: pd.DataFrame, output_dir: str):
     """Plot target label distribution."""
     print("\n--- EDA: Target Distribution ---")
-    plt.figure(figsize=(6, 4))
-    sns.countplot(data=df, x='label')
-    plt.title('Distribution of Labels (0=Not Phishing, 1=Phishing) - DL Dataset')
-    plt.savefig(os.path.join(output_dir, "dl_target_label_distribution.png"), dpi=150)
+    plt.figure(figsize=(8, 6))
+    ax = sns.countplot(data=df, x="label")
+    ax.set_title("Distribution of Labels (0=Not Phishing, 1=Phishing) - DL Dataset")
+    ax.set_xlabel("Label")
+    ax.set_ylabel("Count")
+    # Ensure axis labels and title are not cut off in saved figure
+    plt.tight_layout()
+    plt.savefig(
+        os.path.join(output_dir, "dl_target_label_distribution.png"),
+        dpi=150,
+        bbox_inches="tight",
+    )
     plt.close()
     print(" - Saved: dl_target_label_distribution.png")
+
+
+def plot_combined_target_distribution(
+    train_df: pd.DataFrame,
+    val_df: pd.DataFrame,
+    test_df: pd.DataFrame,
+    output_dir: str,
+):
+    """Plot combined target label distribution for train, validation, and test in 3 subplots."""
+    print("\n--- EDA: Combined Target Distribution (All Splits) ---")
+    fig, axes = plt.subplots(1, 3, figsize=(5.85, 4.60))
+    
+    splits = [
+        (train_df, "Train", axes[0]),
+        (val_df, "Validation", axes[1]),
+        (test_df, "Test", axes[2]),
+    ]
+    
+    for df, split_name, ax in splits:
+        if df is not None and not df.empty:
+            sns.countplot(data=df, x="label", ax=ax)
+            ax.set_title(f"{split_name} Split")
+            ax.set_xlabel("Label")
+            ax.set_ylabel("Count")
+        else:
+            ax.text(0.5, 0.5, f"{split_name} data not available", 
+                   ha="center", va="center", transform=ax.transAxes)
+            ax.set_title(f"{split_name} Split")
+    
+    plt.suptitle("Label Distribution Across Splits (0=Not Phishing, 1=Phishing)", 
+                 fontsize=12, y=1.02)
+    plt.tight_layout()
+    plt.savefig(
+        os.path.join(output_dir, "dl_combined_target_label_distribution.png"),
+        dpi=150,
+        bbox_inches="tight",
+    )
+    plt.close()
+    print(" - Saved: dl_combined_target_label_distribution.png")
 
 
 def engineer_metadata_features(df: pd.DataFrame) -> pd.DataFrame:
@@ -412,6 +469,104 @@ def plot_word_clouds(df: pd.DataFrame, output_dir: str, stop_words_set: set):
         print(" - Skipping word clouds (empty corpus)")
 
 
+def plot_combined_word_clouds(
+    train_df: pd.DataFrame,
+    val_df: pd.DataFrame,
+    test_df: pd.DataFrame,
+    output_dir: str,
+    stop_words_set: set,
+):
+    """Generate combined word clouds for train, validation, and test with separate labels (6 subplots)."""
+    print("\n--- EDA: Combined Word Clouds (All Splits, Separated by Label) ---")
+    # 3 rows (splits) × 2 columns (labels) = 6 subplots
+    fig, axes = plt.subplots(3, 2, figsize=(5.85, 4.60))
+    
+    splits = [
+        (train_df, "Train", axes[0, :]),
+        (val_df, "Validation", axes[1, :]),
+        (test_df, "Test", axes[2, :]),
+    ]
+    
+    for df, split_name, (ax0, ax1) in splits:
+        if df is not None and not df.empty:
+            # Separate text by label
+            label_0_text = " ".join(df[df['label'] == 0]['text'].astype(str))
+            label_1_text = " ".join(df[df['label'] == 1]['text'].astype(str))
+            
+            # Label 0 (Not Phishing) word cloud
+            if label_0_text:
+                try:
+                    wordcloud_0 = WordCloud(
+                        stopwords=stop_words_set,
+                        background_color="white",
+                        max_words=100,
+                        width=400,
+                        height=300,
+                    ).generate(label_0_text)
+                    
+                    ax0.imshow(wordcloud_0, interpolation='bilinear')
+                    ax0.set_title(f"{split_name} - Not Phishing (Label 0)", fontsize=9)
+                    ax0.axis("off")
+                except Exception as e:
+                    ax0.text(0.5, 0.5, f"Error:\n{e}", 
+                           ha="center", va="center", transform=ax0.transAxes, fontsize=7)
+                    ax0.set_title(f"{split_name} - Not Phishing (Label 0)", fontsize=9)
+                    ax0.axis("off")
+            else:
+                ax0.text(0.5, 0.5, f"{split_name}\nLabel 0\nempty", 
+                       ha="center", va="center", transform=ax0.transAxes, fontsize=7)
+                ax0.set_title(f"{split_name} - Not Phishing (Label 0)", fontsize=9)
+                ax0.axis("off")
+            
+            # Label 1 (Phishing) word cloud
+            if label_1_text:
+                try:
+                    wordcloud_1 = WordCloud(
+                        stopwords=stop_words_set,
+                        background_color="white",
+                        max_words=100,
+                        width=400,
+                        height=300,
+                    ).generate(label_1_text)
+                    
+                    ax1.imshow(wordcloud_1, interpolation='bilinear')
+                    ax1.set_title(f"{split_name} - Phishing (Label 1)", fontsize=9)
+                    ax1.axis("off")
+                except Exception as e:
+                    ax1.text(0.5, 0.5, f"Error:\n{e}", 
+                           ha="center", va="center", transform=ax1.transAxes, fontsize=7)
+                    ax1.set_title(f"{split_name} - Phishing (Label 1)", fontsize=9)
+                    ax1.axis("off")
+            else:
+                ax1.text(0.5, 0.5, f"{split_name}\nLabel 1\nempty", 
+                       ha="center", va="center", transform=ax1.transAxes, fontsize=7)
+                ax1.set_title(f"{split_name} - Phishing (Label 1)", fontsize=9)
+                ax1.axis("off")
+        else:
+            # Both subplots show "not available" message
+            ax0.text(0.5, 0.5, f"{split_name}\ndata\nnot available", 
+                   ha="center", va="center", transform=ax0.transAxes, fontsize=7)
+            ax0.set_title(f"{split_name} - Not Phishing (Label 0)", fontsize=9)
+            ax0.axis("off")
+            
+            ax1.text(0.5, 0.5, f"{split_name}\ndata\nnot available", 
+                   ha="center", va="center", transform=ax1.transAxes, fontsize=7)
+            ax1.set_title(f"{split_name} - Phishing (Label 1)", fontsize=9)
+            ax1.axis("off")
+    
+    plt.suptitle("Word Clouds Across Splits (Separated by Label)", 
+                 fontsize=12, y=0.995)
+    plt.tight_layout()
+    # Increased DPI for higher resolution (300 instead of 150)
+    plt.savefig(
+        os.path.join(output_dir, "dl_combined_word_clouds.png"),
+        dpi=300,
+        bbox_inches="tight",
+    )
+    plt.close()
+    print(" - Saved: dl_combined_word_clouds.png")
+
+
 def run_eda(df: pd.DataFrame, output_dir: str):
     """Run all EDA visualizations."""
     print("\n" + "=" * 60)
@@ -445,6 +600,50 @@ def run_eda(df: pd.DataFrame, output_dir: str):
 # Main Execution
 # ===================================================================
 
+def process_split(input_file, split_name, output_dir):
+    """Process a single split (train/validation/test) through the DL preprocessing pipeline."""
+    print(f"\n{'=' * 60}")
+    print(f"Processing {split_name.upper()} Split")
+    print(f"{'=' * 60}")
+    
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Define output paths for this split
+    cleaned_output = os.path.join(output_dir, f"{split_name}_cleaned.csv")
+    deduped_output = os.path.join(output_dir, f"{split_name}_deduped.csv")
+    # Final output goes to organized subdirectory
+    final_output = os.path.join(output_dir, f"{split_name}_split.csv")
+    
+    # Step B1: Clean
+    cleaned_df = clean_dataset_dl(
+        input_filename=input_file,
+        output_filename=cleaned_output,
+        workers=NUM_WORKERS
+    )
+    
+    if cleaned_df.empty:
+        print(f"\n{split_name.capitalize()} split processing stopped: Could not load or clean input file.")
+        return None
+    
+    # Step B2: Deduplicate
+    deduped_df = deduplicate_dataset_dl(
+        cleaned_df,
+        output_filename=deduped_output
+    )
+    
+    # Step B3: Filter by Length
+    final_df = filter_by_length_dl(
+        deduped_df,
+        output_filename=final_output,
+        min_len=MIN_TOKEN_LENGTH,
+        max_len=MAX_TOKEN_LENGTH
+    )
+    
+    print(f"\n{split_name.capitalize()} split processing complete: {len(final_df)} rows")
+    return final_df
+
+
 def main():
     """Main execution function for DL preprocessing and EDA."""
     print("=" * 60)
@@ -453,39 +652,62 @@ def main():
 
     multiprocessing.freeze_support()
 
-    # Step B1: Clean
-    cleaned_dl_df = clean_dataset_dl(
-        input_filename=INPUT_FILE,
-        output_filename=CLEANED_OUTPUT,
-        workers=NUM_WORKERS
-    )
-
-    if cleaned_dl_df.empty:
-        print("\nDL Pipeline stopped: Could not load or clean input file.")
-        return
-
-    # Step B2: Deduplicate
-    deduped_dl_df = deduplicate_dataset_dl(
-        cleaned_dl_df,
-        output_filename=DEDUPED_OUTPUT
-    )
-
-    # Step B3: Filter by Length
-    final_dl_df = filter_by_length_dl(
-        deduped_dl_df,
-        output_filename=FINAL_OUTPUT,
-        min_len=MIN_TOKEN_LENGTH,
-        max_len=MAX_TOKEN_LENGTH
-    )
-
+    # Process each split - save to DL subdirectories
+    train_output_dir = os.path.join(OUTPUT_DIR, "train")
+    val_output_dir = os.path.join(OUTPUT_DIR, "validation")
+    test_output_dir = os.path.join(OUTPUT_DIR, "test")
+    
+    train_df = process_split(TRAIN_INPUT, "train", train_output_dir)
+    val_df = process_split(VAL_INPUT, "validation", val_output_dir)
+    test_df = process_split(TEST_INPUT, "test", test_output_dir)
+    
+    # Run EDA on each split separately
     print("\n" + "=" * 60)
     print("DL Preprocessing Pipeline (B1-B3) Complete")
-    print(f"Final dataset: {FINAL_OUTPUT}")
-    print(f"Total rows: {len(final_dl_df)}")
+    
+    if train_df is not None:
+        print(f"Train rows: {len(train_df)}")
+        train_eda_dir = os.path.join(EDA_OUTPUT_DIR, "train")
+        print(f"\nRunning EDA on train split...")
+        run_eda(train_df, train_eda_dir)
+    
+    if val_df is not None:
+        print(f"Validation rows: {len(val_df)}")
+        val_eda_dir = os.path.join(EDA_OUTPUT_DIR, "validation")
+        print(f"\nRunning EDA on validation split...")
+        run_eda(val_df, val_eda_dir)
+    
+    if test_df is not None:
+        print(f"Test rows: {len(test_df)}")
+        test_eda_dir = os.path.join(EDA_OUTPUT_DIR, "test")
+        print(f"\nRunning EDA on test split...")
+        run_eda(test_df, test_eda_dir)
+    
+    if train_df is not None and val_df is not None and test_df is not None:
+        total_rows = len(train_df) + len(val_df) + len(test_df)
+        print(f"\nTotal rows: {total_rows}")
+        
+        # Create combined plots for all splits
+        print("\n" + "=" * 60)
+        print("Creating Combined EDA Visualizations")
+        print("=" * 60)
+        
+        # Use the main EDA output directory for combined plots
+        combined_output_dir = EDA_OUTPUT_DIR
+        os.makedirs(combined_output_dir, exist_ok=True)
+        stop_words_set = setup_nltk()
+        
+        # Combined target distribution
+        plot_combined_target_distribution(train_df, val_df, test_df, combined_output_dir)
+        
+        # Combined word clouds
+        plot_combined_word_clouds(train_df, val_df, test_df, combined_output_dir, stop_words_set)
+        
+        print("\nCombined EDA visualizations complete!")
+    else:
+        print("\nDL Pipeline stopped: One or more splits failed to process.")
+    
     print("=" * 60)
-
-    # Run EDA
-    run_eda(final_dl_df, EDA_OUTPUT_DIR)
 
 
 if __name__ == "__main__":

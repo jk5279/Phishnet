@@ -1,0 +1,35 @@
+============================================================
+DL Model Evaluation Report
+============================================================
+
+Timestamp: 2025-11-29T02:41:45.096826
+Model: BERT
+
+Best Hyperparameters:
+  learning_rate: 3e-05
+  batch_size: 8
+  epochs: 5
+  max_len: 128
+  warmup_steps: 0
+
+Best Validation Accuracy: 0.9866 (98.66%)
+
+Test Set Metrics:
+  Accuracy: 0.9847 (98.47%)
+  Precision (weighted): 0.9847
+  Recall (weighted): 0.9847
+  F1 Score (weighted): 0.9847
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.98      0.99      0.99      8381
+           1       0.99      0.98      0.98      6430
+
+    accuracy                           0.98     14811
+   macro avg       0.98      0.98      0.98     14811
+weighted avg       0.98      0.98      0.98     14811
+
+Confusion Matrix:
+[[8292   89]
+ [ 138 6292]]

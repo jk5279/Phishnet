@@ -1,0 +1,34 @@
+============================================================
+ML Model Evaluation Report
+============================================================
+
+Timestamp: 2025-11-28T22:07:52.193520
+Model: SGD Classifier (SVM-like)
+
+Best Hyperparameters:
+  clf__alpha: 0.0001
+  clf__class_weight: None
+  preprocessor__text__max_features: 20000
+  preprocessor__text__ngram_range: (1, 2)
+
+Cross-Validation Score: 0.9645
+
+Test Set Metrics:
+  Accuracy: 0.9672 (96.72%)
+  Precision (weighted): 0.9672
+  Recall (weighted): 0.9672
+  F1 Score (weighted): 0.9672
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.97      0.97      8128
+           1       0.97      0.96      0.96      6380
+
+    accuracy                           0.97     14508
+   macro avg       0.97      0.97      0.97     14508
+weighted avg       0.97      0.97      0.97     14508
+
+Confusion Matrix:
+[[7910  218]
+ [ 258 6122]]
