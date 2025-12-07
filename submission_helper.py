@@ -52,15 +52,19 @@ def setup():
 
 def show_project_overview():
     """Display project description."""
-    print("=== Phishnet Project Overview ===")
-    print("This project implements a phishing detection pipeline using both Machine Learning")
-    print("and Deep Learning approaches. The goal is to classify emails as 'Great' (Benign)")
-    print("or 'Bait' (Phishing).")
-    print("\nKey Features:")
-    print("- Data Aggregation from multiple sources")
-    print("- ML Pipeline: Logistic Regression, SVM, Naive Bayes")
-    print("- DL Pipeline: BERT, RoBERTa, DistilBERT")
-    print("- Model Interpretation: Attention visualization")
+    print("=== UofT Phishnet Project Overview ===")
+    print("Team 11: Johnny Kim, Owais Hamid, Marc Bishara, Darya Zanjanpour, Abhay Thakur")
+    print("\nIntroduction:")
+    print("Phishnet is a solution designed to address phishing email problems at UofT.")
+    print("Motivated by sophisticated scams like tuition fee fraud, we developed an end-to-end")
+    print("pipeline to classify emails as 'Great' (Benign) or 'Bait' (Phishing).")
+    
+    print("\nEnd-to-End Pipeline:")
+    print("1. Input: Phishing and Non-Phishing Emails")
+    print("2. Models Explored:")
+    print("   - Machine Learning: Naïve Bayes (Baseline), Logistic Regression, SVM, Phish Score (Hybrid)")
+    print("   - Deep Learning: RoBERTa, BERT, DistilBERT, Llama 3.2 1B (DPO)")
+    print("3. Output: Binary Classification (Bait vs Great) and Interpretability")
     
     img_path = os.path.join(REPO_ROOT, "Phishnet Project Image.jpg")
     if os.path.exists(img_path):
@@ -115,12 +119,14 @@ def visualize_data(df):
 def show_model_architecture():
     """Display model architecture information."""
     print("\n--- Model Architecture ---")
-    print("We utilize transformer-based models (RoBERTa) for sequence classification.")
-    print("The architecture consists of:")
+    print("While we explored multiple architectures (BERT, DistilBERT, Llama), our best performing")
+    print("model for the demonstration is RoBERTa.")
+    print("\nRoBERTa Architecture Details:")
     print("1. Tokenizer: RoBERTa Tokenizer (Byte-Pair Encoding)")
     print("2. Transformer Encoder: 12-layer RoBERTa base model")
     print("3. Classification Head: Linear layer on top of the [CLS] token output")
-    print("\nInput: Tokenized Email Text -> RoBERTa -> Contextual Embeddings -> Classifier -> Probability")
+    print("\nThis model was chosen for its superior performance on the Phishnet dataset (98.75% Accuracy).")
+    print("Input: Tokenized Email Text -> RoBERTa -> Contextual Embeddings -> Classifier -> Probability")
 
 def show_quantitative_results():
     """Display aggregated results and training curves."""
@@ -242,10 +248,25 @@ def run_demo_inference(custom_text=None):
         print("Demonstration dataset not found.")
 
 def show_discussion():
-    print("\n--- Discussion & Insights ---")
-    print("1. Performance: The RoBERTa model achieves high accuracy, outperforming traditional ML models.")
-    print("2. Challenges: Handling imbalanced data and diverse phishing tactics.")
-    print("3. Insights: Attention maps reveal the model focuses on urgency cues and suspicious links.")
+    print("\n--- Discussion & Summary of Approaches ---")
+    print("1. Model Performance (Phishnet Dataset Test Accuracy):")
+    print("   - RoBERTa: 98.75% (Best DL Model)")
+    print("   - BERT: 98.47%")
+    print("   - DistilBERT: 98.44%")
+    print("   - Linear SVC: 97.2%")
+    print("   - Naïve Bayes (Baseline): 94.75%")
+    print("   - Llama 3.2 1B - DPO: 91.7-98.5%")
+    
+    print("\n2. Generalization (UofT Phishbowl Dataset):")
+    print("   - Naïve Bayes showed better generalization (85.71%) compared to DL models")
+    print("     on the out-of-distribution Phishbowl dataset, though RoBERTa maintained")
+    print("     superior performance on the main dataset.")
+
+    print("\n3. Model Interpretability:")
+    print("   - Attention scores reveal the model focuses on urgency cues (e.g., 'today',")
+    print("     'immediate') and suspicious links.")
+    print("   - Demonstration emails (e.g., specific UofT scams) show how the model")
+    print("     identifies 'Bait' even in sophisticated attacks.")
 
 def show_interpretation_examples():
     """Display pre-generated attention maps."""

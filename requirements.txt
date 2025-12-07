@@ -25,6 +25,7 @@ scikit-optimize>=0.9.0  # For hyperparameter tuning with Design of Experiments
 # ==========================================
 torch>=2.0.0
 transformers>=4.30.0
+protobuf>=3.20.0
 
 # ==========================================
 # Natural Language Processing
