@@ -1,9 +1,0 @@
-PLACEHOLDER FILE (Git LFS removed)
-
-This repository previously stored this file via Git LFS.
-To avoid consuming Git LFS quota, the file contents were removed and replaced with this placeholder.
-
-Original LFS oid sha256:26a200cbddfc15d22ce05e43c1bf0b9fcaca1a8e83b5204d35f6972ac71d45b9
-
-If you need the original content, retrieve it from a separate distribution channel
-(e.g., a release asset, external storage, or regenerated artifacts).
