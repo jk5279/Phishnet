@@ -30,6 +30,7 @@ After downloading, extract the dataset to the `Dataset/` directory in the projec
 - [Notes](#notes)
 - [License](#license)
 - [Contact](#contact)
+- [Resources](#resources)
 
 ## Project Overview
 
@@ -37,8 +38,9 @@ This project implements a comprehensive approach to phishing email detection wit
 
 1. **Machine Learning Pipeline**: Uses traditional ML models (Logistic Regression, Linear SVC, SGD Classifier, Naive Bayes) with TF-IDF features and metadata engineering
 2. **Deep Learning Pipeline**: Uses transformer models (BERT, RoBERTa, DistilBERT) for sequence classification
-3. **Model Interpretation**: Attention visualization and analysis tools for understanding model decisions
-4. **Interactive Demo**: Streamlit web application for live phishing detection
+3. **PhishScore Method**: Clustering-based approach using sentence transformers and HDBSCAN clustering for phishing detection
+4. **Model Interpretation**: Attention visualization and analysis tools for understanding model decisions
+5. **Interactive Demo**: Streamlit web application for live phishing detection
 
 All pipelines are trained on the same dataset but with different preprocessing strategies optimized for each approach. The project uses a modular architecture that allows easy addition of new models.
 
@@ -80,6 +82,15 @@ MIE1517-Fall2025-Group11/
 │   └── distilbert/                  # DistilBERT model directory
 ├── models/                          # Legacy trained models (deprecated)
 ├── eda_outputs/                     # Exploratory data analysis visualizations
+├── PhishScore_method/               # Clustering-based phishing detection method
+│   ├── Phishnet_via_clustering.ipynb  # Main clustering notebook
+│   ├── Phish Score architecture.png   # Architecture diagram
+│   ├── cluster and emebddings pkl/    # Saved embeddings and clusters
+│   └── *.png                         # Visualization outputs (PCA, UMAP, clusters, confusion matrices)
+├── Final presentation/              # Final project presentation files
+│   ├── MIE1517_FinalPresentation__Team11_2242_251124.pdf  # Final presentation PDF
+│   ├── MIE1517_FinalPresentation__Team11_2242_251124.odp  # Final presentation source
+│   └── Group 11 Phishnet Final video presentation.mp4     # Video presentation
 └── README.md                        # This file
 ```
 
@@ -94,6 +105,9 @@ Data Processing Phase:
 02_ml_preprocessing_eda.py  ──→ 04_ml_pipeline.py (trains multiple ML models)
     ↓
 03_dl_preprocessing_eda.py  ──→ dl_methods/*_pipeline.py (trains multiple DL models)
+
+Alternative Approach:
+PhishScore_method/Phishnet_via_clustering.ipynb (clustering-based method using sentence transformers and HDBSCAN)
 
 Inference & Analysis Phase:
 09_inference.py (RoBERTa inference on demo dataset)
@@ -112,7 +126,8 @@ Inference & Analysis Phase:
 3. **03_dl_preprocessing_eda.py**: Processes master dataset for DL → creates DL dataset in `cleaned_data/DL/`
 4. **04_ml_pipeline.py**: Trains multiple ML models (Logistic Regression, Linear SVC, SGD, Naive Bayes) → saves to `ml_methods/{model_name}/`
 5. **DL Pipelines** (`dl_methods/*_pipeline.py`): Train transformer models (BERT, RoBERTa, DistilBERT) → saves to `dl_methods/{model_name}/`
-6. **09_inference.py**: Runs RoBERTa inference on demonstration dataset
+6. **PhishScore Method** (`PhishScore_method/Phishnet_via_clustering.ipynb`): Clustering-based approach using sentence transformers and HDBSCAN (separate from ML/DL pipelines)
+7. **09_inference.py**: Runs RoBERTa inference on demonstration dataset
 7. **10_model_interpretation.py**: Generates attention visualizations for model interpretation
 8. **12_test_attention_visualization.py**: Creates attention visualizations for test samples
 9. **11_aggregate_results.py**: Aggregates results from all models into summary CSV
@@ -358,6 +373,75 @@ Similar structure to RoBERTa pipeline but uses BERT-base-cased. Outputs to `dl_m
 **Purpose**: Train and evaluate DistilBERT model (faster, smaller)
 
 Similar structure to RoBERTa pipeline but uses DistilBERT. Outputs to `dl_methods/distilbert/`.
+
+---
+
+### PhishScore Method (Clustering-Based Approach)
+
+**Purpose**: Clustering-based phishing detection using sentence transformers and HDBSCAN clustering
+
+**What it does**:
+1. Pre-processes emails to remove garbage characters and split into train/validation/test sets
+2. Generates email embeddings using sentence transformers (all-MiniLM-L6-v2)
+3. Visualizes email embeddings using PCA and UMAP dimensionality reduction
+4. Performs HDBSCAN clustering on the embeddings to identify email clusters
+5. Assigns a phishing score to each cluster based on the proportion of phishing vs. safe emails in the cluster
+6. Calculates mean vector (medoid) for each cluster
+7. Tests validation and test emails by computing cosine similarity to cluster medoids
+8. Assigns phishing scores to test/validation emails based on their distance from the nearest cluster
+9. Calculates accuracy based on a scoring threshold (default: 0.5)
+
+**Input**: 
+- Processed email dataset (from `01_data_aggregation.py` or similar preprocessing)
+- Training emails for clustering
+- Validation and test sets for evaluation
+
+**Output**:
+- `PhishScore_method/cluster and emebddings pkl/` - Saved embeddings and cluster data:
+  - `embedded_train_df.pkl` - Training email embeddings
+  - `train_embeddings_norm.pkl` - Normalized training embeddings
+  - `eval_embeddings_norm.pkl` - Normalized evaluation embeddings
+  - `clusters_df.pkl` - Cluster assignments and metadata
+  - `umap_reduced_train_embeddings.pkl` - UMAP-reduced embeddings for visualization
+- Visualization images:
+  - `Phish Score architecture.png` - High-level architecture diagram
+  - `2404 clusters created with HDBSCAN and colored by risk score.png` - Cluster visualization
+  - `2404 clusters colored by risk score and 14 colored in black.png` - Cluster analysis
+  - `2404 clusters colored by risk score and 14 colored in red.png` - Cluster analysis
+  - `70K train emails Embedded with all-MiniLM-L6-v2 reduced with PCA colored by label.png` - PCA visualization by label
+  - `70K train emails Embedded with all-MiniLM-L6-v2 reduced with PCA colored by source.png` - PCA visualization by source
+  - `70K train emails Embedded with all-MiniLM-L6-v2 reduced with UMAP colored by label (1).png` - UMAP visualization
+  - `70K train emails Embedded with all-MiniLM-L6-v2 reduced with UMAP colored by label (2).png` - UMAP visualization
+  - `Confusion matrix based on 0.5 threshold.png` - Model performance confusion matrix
+
+**Usage**:
+The PhishScore method is implemented as a Jupyter notebook that can be run in Google Colab or locally:
+
+```bash
+# Open the notebook
+jupyter notebook PhishScore_method/Phishnet_via_clustering.ipynb
+
+# Or access on Google Colab:
+# https://colab.research.google.com/drive/1Kcx1qtCFOVIL3ClQjRgKWGDaMRYcTAUR?usp=sharing
+```
+
+**Key Features**:
+- **Sentence Transformer Embeddings**: Uses all-MiniLM-L6-v2 for high-quality email embeddings
+- **HDBSCAN Clustering**: Density-based clustering that automatically determines the number of clusters
+- **Phishing Score Assignment**: Each cluster receives a score based on the ratio of phishing to safe emails
+- **Cosine Similarity Matching**: Test emails are matched to clusters using cosine similarity to cluster medoids
+- **Visualization**: Comprehensive visualizations including PCA, UMAP, and cluster analysis
+- **Threshold-based Classification**: Emails are classified as phishing if their score exceeds a threshold (default: 0.5)
+
+**Architecture**:
+1. **Preprocessing**: Clean emails and split into train/validation/test sets
+2. **Embedding Generation**: Generate embeddings using sentence transformers
+3. **Dimensionality Reduction**: Apply PCA/UMAP for visualization
+4. **Clustering**: Apply HDBSCAN to identify email clusters
+5. **Score Calculation**: Assign phishing scores to clusters based on label distribution
+6. **Inference**: Match new emails to clusters using cosine similarity and assign scores
+
+This approach is particularly useful for understanding the structure of phishing emails and identifying patterns in the embedding space.
 
 ---
 
@@ -907,6 +991,17 @@ These are from the old pipeline structure (deprecated):
 - `model_results_summary.csv` - Comprehensive comparison of all models (from `11_aggregate_results.py`)
 - `all_models_inference_results.json` - Inference results comparison (if generated)
 
+### PhishScore Method Files (PhishScore_method/)
+- `PhishScore_method/Phishnet_via_clustering.ipynb` - Main clustering notebook
+- `PhishScore_method/cluster and emebddings pkl/` - Saved embeddings and clusters:
+  - `embedded_train_df.pkl` - Training email embeddings
+  - `train_embeddings_norm.pkl` - Normalized training embeddings
+  - `eval_embeddings_norm.pkl` - Normalized evaluation embeddings
+  - `clusters_df.pkl` - Cluster assignments and metadata
+  - `umap_reduced_train_embeddings.pkl` - UMAP-reduced embeddings
+- `PhishScore_method/Phish Score architecture.png` - Architecture diagram
+- `PhishScore_method/*.png` - Visualization outputs (PCA, UMAP, clusters, confusion matrices)
+
 ### EDA Files
 - `eda_outputs/ml_cleaning/*.png` - ML dataset EDA visualizations
 - `eda_outputs/dl_cleaning/dl_*.png` - DL dataset EDA visualizations
@@ -953,6 +1048,9 @@ The project trains multiple models for comparison:
 1. **BERT** - Bidirectional Encoder Representations from Transformers (110M parameters)
 2. **RoBERTa** - Robustly Optimized BERT (125M parameters) - **Recommended, best performance**
 3. **DistilBERT** - Distilled BERT (66M parameters) - Faster, smaller
+
+### Clustering-Based Models
+1. **PhishScore Method** - Clustering-based approach using sentence transformers (all-MiniLM-L6-v2) and HDBSCAN clustering. Assigns phishing scores to emails based on cosine similarity to cluster medoids.
 
 ### Comparing Models
 
@@ -1035,4 +1133,16 @@ See LICENSE file for details.
 
 Group 11 - MIE1517 Fall 2025, University of Toronto
 Jongeun Kim (jhnny.kim@mail.utoronto.ca)
+
+## Resources
+
+### Final Presentation
+
+The final project presentation materials are available in the `Final presentation/` directory:
+
+- **Final Presentation PDF**: `Final presentation/MIE1517_FinalPresentation__Team11_2242_251124.pdf`
+- **Final Presentation Source**: `Final presentation/MIE1517_FinalPresentation__Team11_2242_251124.odp` (LibreOffice/OpenOffice format)
+- **Video Presentation**: `Final presentation/Group 11 Phishnet Final video presentation.mp4`
+
+These files contain the complete project overview, methodology, results, and conclusions presented for the MIE1517 course.
 
